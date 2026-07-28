@@ -66,6 +66,13 @@ const timelineItems = [
   { year: '2020', title: 'GPT-3 (OpenAI)', desc: '175B parámetros. Few-shot learning sin fine-tuning. Demuestra que la escala puede emular razonamiento flexible.', brain: '→ Corteza prefrontal: flexibilidad cognitiva', color: '#EC407A', rgb: '236,64,122' },
   { year: '2022', title: 'ChatGPT + RLHF', desc: 'Alineamiento humano por primera vez masivo. El modelo aprende a ser útil, seguro y honesto — como un niño aprendiendo normas sociales.', brain: '→ Corteza prefrontal + amígdala: alineamiento social', color: '#FDD835', rgb: '253,216,53' },
   { year: '2024–2026', title: 'Agentes Autónomos + Multimodal', desc: 'IA que planifica, usa herramientas, y procesa texto+imagen+video+audio. Acercándose a la integración multimodal del cerebro humano.', brain: '→ Corteza parietal: integración multisensorial', color: '#26C6DA', rgb: '38,198,218' },
+  /* ─── Proyección 2026–2050 ─── */
+  { dim: true, year: '2026–2028', title: 'La Era del Arnés', desc: 'Ingeniería de arnés como disciplina: contexto, restricciones arquitectónicas y gestión de entropía. El modelo es mercancía, el arnés es el foso.', brain: '→ Corteza prefrontal: planificación y control inhibitorio', color: '#555566', rgb: '85,85,102' },
+  { dim: true, year: '2028–2032', title: 'Multiagentes en Producción', desc: 'Cientos de agentes orquestados por harnesses. Protocolos A2A estandarizados. Topologías dinámicas y auto-optimizadas.', brain: '→ Cuerpo calloso: comunicación entre agentes', color: '#4a4a5e', rgb: '74,74,94' },
+  { dim: true, year: '2032–2036', title: 'Arquitectura Auto-Evolutiva', desc: 'Sistemas que modifican su propio arnés. Meta-harnesses que diseñan sub-harnesses. Documentación auto-generada y auto-validada.', brain: '→ Corteza prefrontal dorsolateral: metacognición', color: '#404055', rgb: '64,64,85' },
+  { dim: true, year: '2036–2042', title: 'Cognición Distribuida', desc: 'Redes de agentes operando como una sola mente distribuida. Memoria colectiva y razonamiento emergente no explícito.', brain: '→ Red neuronal por defecto: pensamiento divergente colectivo', color: '#36364a', rgb: '54,54,74' },
+  { dim: true, year: '2042–2048', title: 'Simbiosis Humano-Máquina', desc: 'Interfaces neurales. Restricciones en lenguaje natural. El ingeniero pasa de escribir código a diseñar ecosistemas cognitivos.', brain: '→ Corteza prefrontal + ínsula: integración de intención y acción', color: '#2c2c40', rgb: '44,44,64' },
+  { dim: true, year: '2048–2050', title: '¿Singularidad o Coexistencia?', desc: 'Sistemas que definen sus propias restricciones éticas. El rol humano se centra en propósito y valores. La ingeniería de arnés como última disciplina.', brain: '→ Toda la corteza: el horizonte de la integración', color: '#222236', rgb: '34,34,54' },
 ];
 
 const stats = [
@@ -209,7 +216,7 @@ export default function ArchitecturePage() {
 
             <div className="timeline" role="list" aria-label="Línea temporal de IA">
               {timelineItems.map((t) => (
-                <div className="tl-item" role="listitem" style={{ '--tl-color': t.color, '--tl-rgb': t.rgb }} key={t.year + t.title}>
+                <div className={"tl-item" + (t.dim ? " tl-dim" : "")} role="listitem" style={{ '--tl-color': t.color, '--tl-rgb': t.rgb }} key={t.year + t.title}>
                   <div className="tl-dot"></div>
                   <div className="tl-year">{t.year}</div>
                   <div className="tl-title">{t.title}</div>

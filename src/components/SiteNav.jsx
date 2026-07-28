@@ -11,7 +11,6 @@ export default function SiteNav({ brand, className = 'nav' }) {
         <NavLink to="/conexiones">Mapa Neural</NavLink>
         <NavLink to="/agentes">Agentes Autónomos</NavLink>
         <NavLink to="/multiagente">Sist. Multiagente</NavLink>
-        <NavLink to="/futuro" className="nav-future">Futuro</NavLink>
       </div>
     </nav>
   );

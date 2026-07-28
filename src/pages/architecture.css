@@ -596,6 +596,31 @@
   letter-spacing: 0.01em;
 }
 
+.page-architecture .tl-dim {
+  opacity: 0.25;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.page-architecture .tl-dim:hover {
+  opacity: 0.35;
+}
+.page-architecture .tl-dim .tl-dot {
+  box-shadow: none;
+  border-color: rgba(255,255,255,0.06);
+}
+.page-architecture .tl-dim .tl-year {
+  color: rgba(255,255,255,0.12);
+}
+.page-architecture .tl-dim .tl-title {
+  color: rgba(255,255,255,0.1);
+}
+.page-architecture .tl-dim .tl-desc {
+  color: rgba(255,255,255,0.06);
+}
+.page-architecture .tl-dim .tl-brain {
+  opacity: 0.2;
+}
+
 .page-architecture .page-footer {
   border-top: 1px solid var(--border);
   padding: 32px 28px;
