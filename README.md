@@ -4,13 +4,13 @@ Una presentación interactiva 3D que mapea conceptos de inteligencia artificial 
 
 ## 🧠 Conceptos
 
-| Página | Ruta | Descripción |
-|--------|------|-------------|
-| **Cerebro 3D** | `/` | Cerebro humano en vóxeles 3D con 11 regiones cerebrales y analogías con IA |
-| **Conexiones** | `/conexiones` | Mapa SVG de conexiones cerebro ↔ IA |
-| **Arquitectura IA** | `/arquitectura` | Diagrama de arquitectura de IA con pipeline y timeline |
-| **Agentes IA** | `/agentes` | Ciclo autónomo de agentes con escena Three.js interactiva |
-| **Multiagente** | `/multiagente` | 8 conceptos MAS con animaciones 3D: Harness, Inner/Outer Loop, Coordinación, Comunicación, Memoria Compartida, Handover, Red de Agentes |
+| Página | Ruta | Captura | Descripción |
+|--------|------|---------|-------------|
+| **Cerebro 3D** | `/` | ![Cerebro 3D](screenshots/brain-3d.png) | Cerebro humano en vóxeles 3D con 11 regiones cerebrales y analogías con IA |
+| **Conexiones** | `/conexiones` | ![Conexiones](screenshots/connection-map.png) | Mapa SVG de conexiones cerebro ↔ IA |
+| **Arquitectura IA** | `/arquitectura` | ![Arquitectura](screenshots/ai-architecture.png) | Diagrama de arquitectura de IA con pipeline y timeline |
+| **Agentes IA** | `/agentes` | ![Agentes](screenshots/agents-ia.png) | Ciclo autónomo de agentes con escena Three.js interactiva |
+| **Multiagente** | `/multiagente` | ![Multiagente](screenshots/multiagent.png) | 8 conceptos MAS con animaciones 3D |
 
 ## 🚀 Compilar y ejecutar
 
