@@ -101,7 +101,7 @@ export default function ArchitecturePage() {
   return (
     <div className="page-architecture">
       <a href="#content" className="skip-nav">Saltar al contenido</a>
-      <SiteNav brand="CEREBRO ↔ IA" />
+      <SiteNav brand="Cerebro ↔ IA" />
 
       <main id="content">
         <div className="hero">

@@ -16,7 +16,7 @@ export default function BrainPage() {
   const resizeRef = useRef(null);
 
   useEffect(() => {
-    document.title = 'Cerebro Humano → Inteligencia Artificial | Cerebro 3D';
+    document.title = 'Cerebro 3D — Cerebro ↔ IA';
 
     const container = containerRef.current;
     const loadingEl = loadingRef.current;
@@ -424,7 +424,7 @@ export default function BrainPage() {
         <div className="loading-bar"><div className="loading-fill"></div></div>
       </div>
       <div id="scene-container" ref={containerRef}></div>
-      <SiteNav brand="Cerebro → IA" />
+      <SiteNav brand="Cerebro ↔ IA" />
       <div className="title-bar">
         <h1>Cerebro Humano → Inteligencia Artificial</h1>
         <p>Corte sagittal · Gira 360° · Haz clic en una región para explorar</p>

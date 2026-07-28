@@ -16,7 +16,7 @@ export default function AgentsPage() {
   const resizeHandleRef = useRef(null);
 
   useEffect(() => {
-    document.title = 'Agentes IA — El Ciclo Autónomo';
+    document.title = 'Agentes Autónomos — Cerebro ↔ IA';
 
     const container = containerRef.current;
     const loadingEl = loadingRef.current;
@@ -558,7 +558,7 @@ export default function AgentsPage() {
 
       <a href="#main" className="skip-nav">Saltar al contenido</a>
 
-      <SiteNav brand="IA Visual" />
+      <SiteNav brand="Cerebro ↔ IA" />
 
       <main id="main">
         <div id="hero">

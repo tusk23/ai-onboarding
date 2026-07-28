@@ -179,7 +179,7 @@ export default function MasPage() {
   const loadingRef = useRef(null);
 
   useEffect(() => {
-    document.title = 'Sistemas Multiagente \u2014 MAS';
+    document.title = 'Sistemas Multiagente — Cerebro ↔ IA';
 
     const container = containerRef.current;
     const label = hoverLabelRef.current;
@@ -2073,7 +2073,7 @@ export default function MasPage() {
         <div className="loading-bar"><div className="loading-fill"></div></div>
       </div>
       <div id="scene-container" ref={containerRef}></div>
-      <SiteNav brand="IA Visual" />
+      <SiteNav brand="Cerebro ↔ IA" />
       <div className="title-bar">
         <h1><span>Sistemas Multiagente</span> — MAS</h1>
         <p>Coordinación · Comunicación · Orquestación · Haz clic en un concepto</p>

@@ -29,7 +29,7 @@ export default function ConnectionMapPage() {
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    document.title = 'Mapa de Conexiones — Cerebro ↔ IA';
+    document.title = 'Mapa Neural — Cerebro ↔ IA';
     return () => { mountRef.current = false; };
   }, []);
 
@@ -96,7 +96,7 @@ export default function ConnectionMapPage() {
 
   return (
     <div className="page-connection">
-      <SiteNav brand="Neuro ↔ IA" className="nav-bar" />
+      <SiteNav brand="Cerebro ↔ IA" />
       <div className="page-header">
         <h1>Mapa de Conexiones</h1>
         <p>Cada region del cerebro inspira un componente de la IA moderna. Haz clic en un nodo para ver la conexion completa.</p>

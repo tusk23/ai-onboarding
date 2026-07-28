@@ -14,7 +14,7 @@
   padding: 0;
 }
 
-.page-connection .nav-bar {
+.page-connection .nav {
   position: sticky;
   top: 0;
   z-index: 20;
@@ -27,7 +27,7 @@
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255,255,255,0.05);
 }
-.page-connection .nav-bar .nav-brand {
+.page-connection .nav .nav-brand {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -35,11 +35,11 @@
   color: #4FC3F7;
   font-family: var(--font-mono);
 }
-.page-connection .nav-bar .nav-links {
+.page-connection .nav .nav-links {
   display: flex;
   gap: 4px;
 }
-.page-connection .nav-bar .nav-links a {
+.page-connection .nav .nav-links a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -51,11 +51,11 @@
   color: #8090a8;
   transition: all 0.18s ease;
 }
-.page-connection .nav-bar .nav-links a:hover {
+.page-connection .nav .nav-links a:hover {
   background: rgba(255,255,255,0.05);
   color: #c0c8d8;
 }
-.page-connection .nav-bar .nav-links a.active {
+.page-connection .nav .nav-links a.active {
   background: rgba(79,195,247,0.1);
   color: #4FC3F7;
   border: 1px solid rgba(79,195,247,0.2);
@@ -326,8 +326,8 @@
 }
 
 @media (max-width: 768px) {
-  .page-connection .nav-bar { padding: 10px 16px; }
-  .page-connection .nav-bar .nav-links a { padding: 5px 10px; font-size: 11px; }
+  .page-connection .nav { padding: 10px 16px; }
+  .page-connection .nav .nav-links a { padding: 5px 10px; font-size: 11px; }
   .page-connection .map-canvas { height: auto; }
   .page-connection .brain-side,
   .page-connection .ai-side { position: relative; width: 100%; }
