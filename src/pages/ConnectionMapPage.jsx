@@ -3,27 +3,9 @@ import SiteNav from '../components/SiteNav';
 import { useI18n } from '../i18n/index.jsx';
 import './connection.css';
 
-const DATA = [
-  { id:'frontal', brain:{name:'Corteza Prefrontal',sub:'Planificacion, decisiones, razonamiento'}, ai:{name:'Razonamiento IA',sub:'Chain-of-Thought, RLHF, Prompt Engineering'}, color:'#4FC3F7', analogy:'El CEO del cerebro — siempre preguntando "que pasaria si...". En IA, el Chain-of-Thought ejecuta exactamente ese ciclo: razona paso a paso antes de actuar.', techs:['Chain-of-Thought','RLHF','Prompt Engineering','Reasoning','Tree of Thought'] },
-  { id:'temporal', brain:{name:'Corteza Temporal',sub:'Lenguaje, memoria semantica, audicion'}, ai:{name:'Procesamiento de Lenguaje',sub:'NLP, Tokenizacion, Embeddings, Transformers'}, color:'#66BB6A', analogy:'El traductor universal — convierte senales en significados. Los Transformers hacen lo mismo: transforman secuencias de tokens en representaciones semanticas.', techs:['NLP','Tokenizacion','Embeddings','Transformers','BERT','GPT'] },
-  { id:'parietal', brain:{name:'Corteza Parietal',sub:'Integracion sensorial, espacio, atencion'}, ai:{name:'Modelos Multimodales',sub:'Sensor Fusion, Spatial AI, Vision-Language'}, color:'#FFA726', analogy:'El mezclador maestro — une vista, tacto y espacio en una sola experiencia. GPT-4V y Gemini fusionan imagen+texto de la misma forma.', techs:['Multimodal Models','Sensor Fusion','Spatial AI','CLIP','GPT-4V'] },
-  { id:'occipital', brain:{name:'Corteza Occipital',sub:'Vision, patrones, color'}, ai:{name:'Vision por Computadora',sub:'CNNs, Diffusion Models, YOLO, DETR'}, color:'#EF5350', analogy:'El cineasta interno — construye mundos visuales enteros desde photons. Stable Diffusion hace literalmente esto: genera imagenes completas desde ruido.', techs:['Computer Vision','CNNs','YOLO','DETR','Diffusion Models','DALL-E'] },
-  { id:'hipocampo', brain:{name:'Hipocampo',sub:'Memoria declarativa, navegacion'}, ai:{name:'Sistemas de Memoria',sub:'RAG, Vector DBs, Context Windows'}, color:'#AB47BC', analogy:'El archivista — decide que guardar para siempre y que dejar ir. RAG hace lo mismo: busca en bases de conocimiento lo relevante para cada consulta.', techs:['RAG','Vector Databases','Context Windows','Memory Systems','Pinecone','ChromaDB'] },
-  { id:'amigdala', brain:{name:'Amigdala',sub:'Emociones, miedo, seguridad'}, ai:{name:'Seguridad y Guardrails',sub:'Sentiment Analysis, Safety Filters, Guardrails'}, color:'#EC407A', analogy:'El guardian emocional — detecta el peligro antes que la razon. Los safety filters de OpenAI detectan contenido problematico antes de que llegue al usuario.', techs:['Sentiment Analysis','Emotion AI','Safety Filters','Guardrails','Constitutional AI'] },
-  { id:'talamo', brain:{name:'Talamo',sub:'Relay sensorial, regulacion'}, ai:{name:'Infraestructura de Datos',sub:'API Gateway, Message Broker, Data Pipeline'}, color:'#FDD835', analogy:'El director de trafico — todo dato sensorial pasa por aqui. Un API Gateway en una arquitectura de microservicios cumple exactamente la misma funcion.', techs:['API Gateway','Message Broker','Data Pipeline','Router','Kafka','RabbitMQ'] },
-  { id:'cuerpo_calloso', brain:{name:'Cuerpo Calloso',sub:'Comunicacion entre hemisferios'}, ai:{name:'Sistemas Ensemble',sub:'Multi-Agent, Mixture of Experts, Voting'}, color:'#78909C', analogy:'El puente — conecta dos mundos que no saben que existen el uno sin el otro. Mixture of Experts activa solo los modulos relevantes para cada tarea.', techs:['Ensemble Methods','Multi-Agent Systems','Mixture of Experts','MoE','Gating Networks'] },
-  { id:'cerebelo', brain:{name:'Cerebelo',sub:'Coordinacion, aprendizaje motor'}, ai:{name:'Optimizacion de Modelos',sub:'Fine-tuning, LoRA, QLoRA, Gradient Descent'}, color:'#26C6DA', analogy:'El artesano — perfecciona cada movimiento con practica. LoRA ajusta finamente un modelo pre-entrenado sin re-entrenar todo, como el cerebelo refina movimientos.', techs:['Fine-tuning','LoRA','QLoRA','Gradient Descent','Adam','Learning Rate Scheduling'] },
-  { id:'tronco', brain:{name:'Tronco Encefalico',sub:'Funciones vitales automaticas'}, ai:{name:'MLOps e Infraestructura',sub:'Kubernetes, Model Serving, CI/CD'}, color:'#8D6E63', analogy:'Los cimientos — funciona perfectamente sin que nunca lo notes. Kubernetes mantiene los modelos desplegados vivos y respondiendo, como el tronco mantiene la respiracion.', techs:['MLOps','Kubernetes','Model Serving','CI/CD','Docker','TensorFlow Serving'] },
-];
-
-function hexToRgb(hex) {
-  const r = parseInt(hex.slice(1,3), 16);
-  const g = parseInt(hex.slice(3,5), 16);
-  const b = parseInt(hex.slice(5,7), 16);
-  return `${r},${g},${b}`;
-}
-
 export default function ConnectionMapPage() {
+  var { t } = useI18n();
+  var DATA = t('connection.data');
   const canvasRef = useRef(null);
   const svgRef = useRef(null);
   const mountRef = useRef(true);

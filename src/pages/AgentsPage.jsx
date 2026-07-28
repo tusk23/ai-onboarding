@@ -36,38 +36,16 @@ export default function AgentsPage() {
 
     var DARK = 0x2a3040, MID = 0x384050, PANEL = 0x455060, HIGHLIGHT = 0x505870, SILVER = 0x8898aa, DSILVER = 0x6a7a90;
 
-    var ROBOT_CONCEPTS = {
-      percepcion: { color: 0x4FC3F7, label: 'Percepción', css: '#4FC3F7',
-        analogy: 'Los sensores del agente — cómo recibe información del mundo exterior. En un LLM: el prompt, el historial de conversación, los datos de las herramientas.',
-        rules: ['Los sensores determinan qué tan bien el agente entiende su entorno', 'La percepción debe ser multi-modal: texto, imágenes, estructuras de datos', 'Un agente sin percepción actualizada toma decisiones obsoletas', 'El contexto window es el "campo de visión" del agente'],
-        theory: 'En la arquitectura de un agente, la percepción es la capa de entrada que filtra y estructura la información cruda del mundo. Incluye parsing de prompts, procesamiento de herramientas y mantenimiento del contexto.',
-        insight: 'La calidad de la percepción define el techo de inteligencia del agente.'
-      },
-      razonamiento: { color: 0x9B59B6, label: 'Razonamiento', css: '#9B59B6',
-        analogy: 'El cerebro del agente — donde transforma percepción en decisión. Chain-of-Thought, Tree-of-Thought, planificación jerárquica.',
-        rules: ['Chain-of-Thought descompleja problemas en pasos manejables', 'El razonamiento debe ser verificable: cada paso debe justificarse', 'Memorizar patrones no es razonar — comprender sí', 'La planificación jerárquica supera la lineal en problemas complejos'],
-        theory: 'El razonamiento en LLMs evolucionó de simple completion a cadenas de pensamiento estructuradas. Los agentes modernos combinan CoT, ToT y reflection para construir razonamientos robustos.',
-        insight: 'Pensar no es solo generar tokens — es reducir la entropía de las opciones.'
-      },
-      memoria: { color: 0xE91E63, label: 'Memoria', css: '#E91E63',
-        analogy: 'El almacén del agente — lo que recuerda entre sesiones, entre herramientas, entre decisiones.',
-        rules: ['La memoria a corto plazo se pierde entre conversaciones', 'RAG es buscar en los propios recuerdos del agente', 'La memoria episódica es más útil que la semántica pura', 'Un agente sin memoria repite los mismos errores'],
-        theory: 'Tres capas: Working Memory (contexto activo), Episodic Memory (experiencias pasadas) y Semantic Memory (conocimiento general). El diseño de la arquitectura de memoria determina la sofisticación del agente.',
-        insight: 'La memoria transforma un prompt en una relación continua.'
-      },
-      accion: { color: 0x2ECC71, label: 'Acción', css: '#2ECC71',
-        analogy: 'Los efectores del agente — cómo transforma decisiones en cambios reales en el mundo. Tool calls, API writes, código generado.',
-        rules: ['La acción debe ser observable y reversible cuando sea posible', 'Cada acción tiene un costo computacional y potencialmente real', 'La mejor acción es la más simple que logra la meta', 'El feedback post-acción alimenta la memoria del agente'],
-        theory: 'El ciclo percepción-razonamiento-acción es el heartbeat de todo agente. Cada iteración produce un paso concreto que modifica el estado del mundo o del propio agente.',
-        insight: 'Un agente que solo razona sin actuar es un filósofo sin clientes.'
-      },
-      herramientas: { color: 0xF1C40F, label: 'Herramientas', css: '#F1C40F',
-        analogy: 'Las herramientas externas que el agente puede invocar — extensiones de sus capacidades naturales. MCP, APIs, bases de datos, navegadores.',
-        rules: ['Las herramientas amplían el espacio de acciones posible', 'Elegir la herramienta correcta es tan importante como usarla bien', 'Las herramientas deben ser descritas claramente para que el agente las entienda', 'MCP estandariza la interfaz entre agentes y herramientas'],
-        theory: 'Model Context Protocol es el estándar emergente para conectar agentes con herramientas. Define una capa de abstracción que permite interoperabilidad entre diferentes agentes y proveedores.',
-        insight: 'Las herramientas no reemplazan al razonamiento — lo amplifican.'
-      }
-    };
+    var ROBOT_CONCEPTS = (function() {
+      var raw = t('agents.concepts');
+      var out = {};
+      Object.keys(raw).forEach(function(k) {
+        var c = JSON.parse(JSON.stringify(raw[k]));
+        c.color = parseInt(c.color.replace('#',''), 16);
+        out[k] = c;
+      });
+      return out;
+    })();
 
     function init() {
       scene = new THREE.Scene();

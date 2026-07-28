@@ -4,86 +4,12 @@ import SiteNav from '../components/SiteNav';
 import { useI18n } from '../i18n/index.jsx';
 import './architecture.css';
 
-const stages = [
-  { id: 's0', num: 'Fase 01', title: 'Recolección de Datos', brain: 'Corteza Sensorial', color: '#4FC3F7', rgb: '79,195,247',
-    brainDetail: 'Los órganos sensoriales capturan estímulos del mundo exterior — luz, sonido, presión, temperatura. La corteza sensorial primaria recibe estos datos crudos.',
-    iaDetail: 'Se recopilan terabytes de texto, imágenes, video y audio de internet, libros y bases de datos. Es el sensor crudo del modelo.',
-    techs: ['Web Scraping', 'APIs', 'Datasets', 'Data Lakes'] },
-  { id: 's1', num: 'Fase 02', title: 'Pre-procesamiento', brain: 'Tálamo', color: '#66BB6A', rgb: '102,187,106',
-    brainDetail: 'El tálamo filtra, organiza y redirige la información sensorial a las áreas corticales apropiadas. Solo el 1% de la información llega al consciente.',
-    iaDetail: 'Limpieza, normalización, tokenización, deduplicación. El texto crudo se convierte en tokens; las imágenes se redimensionan y estandarizan.',
-    techs: ['Tokenización', 'Cleaning', 'Normalization', 'Embeddings'] },
-  { id: 's2', num: 'Fase 03', title: 'Pre-entrenamiento', brain: 'Redes Neuronales Generales', color: '#FFA726', rgb: '255,167,38',
-    brainDetail: 'Durante los primeros años de vida, el cerebro forma conexiones neuronales masivas sin un propósito específico — es aprendizaje autodidacta general.',
-    iaDetail: 'El modelo aprende patrones estadísticos del lenguaje (next-token prediction) o estructura visual (masked autoencoding) de manera no supervisada.',
-    techs: ['Self-Supervised', 'Next-Token Prediction', 'Masked Autoencoding', 'Contrastive Learning'] },
-  { id: 's3', num: 'Fase 04', title: 'Ajuste Fino (Fine-tuning)', brain: 'Cerebelo + Hipocampo', color: '#AB47BC', rgb: '171,71,188',
-    brainDetail: 'El cerebelo refina habilidades con práctica; el hipocampo consolida memorias específicas. Juntos transforman conocimiento general en competencias concretas.',
-    iaDetail: 'Se entrena el modelo pre-entrenado con datos específicos de la tarea. LoRA/QLoRA permiten ajustar sin re-entrenar todo el modelo.',
-    techs: ['LoRA', 'QLoRA', 'PEFT', 'Adapter Layers', 'Instruction Tuning'] },
-  { id: 's4', num: 'Fase 05', title: 'RLHF / Alineamiento', brain: 'Corteza Prefrontal + Amígdala', color: '#EC407A', rgb: '236,64,122',
-    brainDetail: 'La corteza prefrontal evalúa consecuencias; la amígdala señala peligro. Juntos alinean el comportamiento con normas sociales y seguridad.',
-    iaDetail: 'Humanos evalúan respuestas del modelo; se entrena un reward model que luego guía al modelo hacia comportamientos seguros y útiles.',
-    techs: ['RLHF', 'DPO', 'Reward Model', 'Constitutional AI', 'Guardrails'] },
-  { id: 's5', num: 'Fase 06', title: 'Deploy & Serving', brain: 'Tronco Encefálico', color: '#26C6DA', rgb: '38,198,218',
-    brainDetail: 'El tronco encefálico mantiene las funciones vitales — respiración, circulación, sueño — sin que lo notes.',
-    iaDetail: 'Kubernetes, load balancers, CUDA optimizados, cuantización. La infraestructura que mantiene el modelo vivo y respondiendo en milisegundos.',
-    techs: ['Kubernetes', 'CUDA', 'TensorRT', 'Quantization', 'Edge Deploy'] },
-];
-
-const architectures = [
-  { id: 'a0', name: 'Transformer', brain: 'Corteza Prefrontal', color: '#4FC3F7', rgb: '79,195,247',
-    desc: 'Mecanismo de atención que procesa secuencias completas en paralelo. La base de GPT, BERT, y casi todos los LLMs modernos.',
-    how: 'El mecanismo de self-attention permite que cada token observe todos los demás tokens y decida cuáles son relevantes. Multi-head attention ejecuta esto en paralelo con diferentes perspectivas.',
-    models: ['GPT-4', 'Claude', 'BERT', 'Llama', 'Gemini'] },
-  { id: 'a1', name: 'CNN (Red Convolucional)', brain: 'Corteza Occipital', color: '#66BB6A', rgb: '102,187,106',
-    desc: 'Detecta patrones espaciales jerárquicos — de bordes a texturas a objetos completos. El ojo de la IA.',
-    how: 'Filtros convolucionales se deslizan sobre la imagen detectando patrones a diferentes escalas. Las capas profundas combinan patrones simples en representaciones complejas.',
-    models: ['ResNet', 'VGG', 'EfficientNet', 'YOLO'] },
-  { id: 'a2', name: 'Diffusion Models', brain: 'Corteza Occipital + Temporal', color: '#FFA726', rgb: '255,167,38',
-    desc: 'Generan imágenes, video y audio aprendiendo a revertir el proceso de ruido gradual. El cineasta de la IA.',
-    how: 'Se agrega ruido a los datos progresivamente (forward diffusion), luego se entrena una red para revertir este proceso. El modelo aprende la distribución de los datos y puede muestrear nuevos ejemplares.',
-    models: ['Stable Diffusion', 'DALL-E 3', 'Midjourney', 'Sora'] },
-  { id: 'a3', name: 'Mixture of Experts (MoE)', brain: 'Cuerpo Calloso', color: '#AB47BC', rgb: '171,71,188',
-    desc: 'Redes que activan solo subconjuntos especializados de neuronas por tarea. Eficiencia masiva sin sacrificar capacidad.',
-    how: 'Un gating network decide qué expertos (sub-redes) activar para cada token. Solo el 10–25% de los parámetros se activan por forward pass.',
-    models: ['Mixtral', 'GPT-4', 'Switch Transformer', 'GShard'] },
-  { id: 'a4', name: 'GANs (Generative Adversarial)', brain: 'Amígdala (competencia)', color: '#EC407A', rgb: '236,64,122',
-    desc: 'Dos redes compiten: una genera, la otra detecta falsificaciones. La evolución por competencia crea resultados realistas.',
-    how: 'El generador crea muestras falsas; el discriminador intenta distinguir reales de falsas. Ambos mejoran en competencia — similar a cómo la amígdala entrena el sistema de pelea o huye.',
-    models: ['StyleGAN', 'ProGAN', 'CycleGAN'] },
-  { id: 'a5', name: 'RNN / LSTM / GRU', brain: 'Hipocampo (memoria secuencial)', color: '#FDD835', rgb: '253,216,53',
-    desc: 'Procesan secuencias paso a paso con memoria interna. Precursores de los Transformers para tareas secuenciales.',
-    how: 'Cada paso procesa el input actual + el estado oculto del paso anterior. LSTM agrega puertas para decidir qué recordar y qué olvidar — directamente inspirado en la memoria declarativa del hipocampo.',
-    models: ['LSTM', 'GRU', 'Bidirectional', 'Seq2Seq'] },
-];
-
-const timelineItems = [
-  { year: '1943', title: 'McCulloch & Pitts: Neurona Formal', desc: 'Primer modelo matemático de una neurona biológica. Inspirado directamente en la neurociencia.', brain: '→ Corteza cerebral: redes de neuronas', color: '#4FC3F7', rgb: '79,195,247' },
-  { year: '1958', title: 'Perceptron (Rosenblatt)', desc: 'Primera red neuronal que puede aprender. Capaz de clasificar linealmente — como un reflejo condicionado simple.', brain: '→ Bulbo raquídeo: reflejos simples', color: '#66BB6A', rgb: '102,187,106' },
-  { year: '1986', title: 'Backpropagation (Rumelhart, Hinton)', desc: 'Algoritmo que permite a las redes aprender capas profundas. Inspirado en cómo el cerebro ajusta sinapsis por refuerzo.', brain: '→ Cerebelo: ajuste fino por práctica', color: '#FFA726', rgb: '255,167,38' },
-  { year: '1998', title: 'LeNet-5 (LeCun)', desc: 'Primera CNN exitosa para reconocimiento de dígitos. Estructura jerárquica inspirada en la corteza visual.', brain: '→ Corteza occipital: procesamiento visual', color: '#EF5350', rgb: '239,83,80' },
-  { year: '2017', title: 'Attention Is All You Need (Vaswani)', desc: 'El Transformer cambia todo. Mecanismo de atención que procesa en paralelo — como el cerebro procesa múltiples estímulos simultáneamente.', brain: '→ Corteza prefrontal: atención selectiva', color: '#AB47BC', rgb: '171,71,188' },
-  { year: '2020', title: 'GPT-3 (OpenAI)', desc: '175B parámetros. Few-shot learning sin fine-tuning. Demuestra que la escala puede emular razonamiento flexible.', brain: '→ Corteza prefrontal: flexibilidad cognitiva', color: '#EC407A', rgb: '236,64,122' },
-  { year: '2022', title: 'ChatGPT + RLHF', desc: 'Alineamiento humano por primera vez masivo. El modelo aprende a ser útil, seguro y honesto — como un niño aprendiendo normas sociales.', brain: '→ Corteza prefrontal + amígdala: alineamiento social', color: '#FDD835', rgb: '253,216,53' },
-  { year: '2024–2026', title: 'Agentes Autónomos + Multimodal', desc: 'IA que planifica, usa herramientas, y procesa texto+imagen+video+audio. Acercándose a la integración multimodal del cerebro humano.', brain: '→ Corteza parietal: integración multisensorial', color: '#26C6DA', rgb: '38,198,218' },
-  /* ─── Proyección 2026–2050 ─── */
-  { dim: true, year: '2026–2028', title: 'La Era del Arnés', desc: 'Ingeniería de arnés como disciplina: contexto, restricciones arquitectónicas y gestión de entropía. El modelo es mercancía, el arnés es el foso.', brain: '→ Corteza prefrontal: planificación y control inhibitorio', color: '#555566', rgb: '85,85,102' },
-  { dim: true, year: '2028–2032', title: 'Multiagentes en Producción', desc: 'Cientos de agentes orquestados por harnesses. Protocolos A2A estandarizados. Topologías dinámicas y auto-optimizadas.', brain: '→ Cuerpo calloso: comunicación entre agentes', color: '#4a4a5e', rgb: '74,74,94' },
-  { dim: true, year: '2032–2036', title: 'Arquitectura Auto-Evolutiva', desc: 'Sistemas que modifican su propio arnés. Meta-harnesses que diseñan sub-harnesses. Documentación auto-generada y auto-validada.', brain: '→ Corteza prefrontal dorsolateral: metacognición', color: '#404055', rgb: '64,64,85' },
-  { dim: true, year: '2036–2042', title: 'Cognición Distribuida', desc: 'Redes de agentes operando como una sola mente distribuida. Memoria colectiva y razonamiento emergente no explícito.', brain: '→ Red neuronal por defecto: pensamiento divergente colectivo', color: '#36364a', rgb: '54,54,74' },
-  { dim: true, year: '2042–2048', title: 'Simbiosis Humano-Máquina', desc: 'Interfaces neurales. Restricciones en lenguaje natural. El ingeniero pasa de escribir código a diseñar ecosistemas cognitivos.', brain: '→ Corteza prefrontal + ínsula: integración de intención y acción', color: '#2c2c40', rgb: '44,44,64' },
-  { dim: true, year: '2048–2050', title: '¿Singularidad o Coexistencia?', desc: 'Sistemas que definen sus propias restricciones éticas. El rol humano se centra en propósito y valores. La ingeniería de arnés como última disciplina.', brain: '→ Toda la corteza: el horizonte de la integración', color: '#222236', rgb: '34,34,54' },
-];
-
-const stats = [
-  { num: '10', label: 'Regiones cerebrales', color: '#4FC3F7' },
-  { num: '50+', label: 'Tecnologías IA', color: '#66BB6A' },
-  { num: '6', label: 'Fases de entrenamiento', color: '#FFA726' },
-  { num: '80+', label: 'Años de neuronas a LLMs', color: '#EF5350' },
-];
-
 export default function ArchitecturePage() {
+  var { t } = useI18n();
+  var stages = t('architecture.stages') || [];
+  var architectures = t('architecture.architectures') || [];
+  var timelineItems = t('architecture.timelineItems') || [];
+  var stats = t('architecture.stats.items') || [];
   var { t } = useI18n();
   useEffect(() => {
     document.title = t('architecture.title');
@@ -119,7 +45,7 @@ export default function ArchitecturePage() {
         </div>
 
         <div className="content">
-          <div className="stats" role="list" aria-label="Estadísticas clave">
+          <div className="stats" role="list" aria-label={t('architecture.stats.label')}>
             {stats.map((s, i) => (
               <div className="stat" role="listitem" key={i}>
                 <div className="stat-num" style={{ color: s.color }}>{s.num}</div>

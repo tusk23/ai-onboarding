@@ -20,14 +20,556 @@
     "subtitle": "Sagittal cut · 360° rotate · Click a region to explore",
     "loading": "Generating brain…",
     "legend": "Regions",
-    "hints": "navigate · Esc close · scroll zoom"
+    "hints": "navigate · Esc close · scroll zoom",
+    "regions": [
+      {
+        "id": "frontal",
+        "name": "Corteza Prefrontal",
+        "brain": "Planificación, toma de decisiones, razonamiento abstracto, control inhibitorio.",
+        "ai": [
+          "Chain-of-Thought",
+          "RLHF",
+          "Prompt Engineering",
+          "Reasoning"
+        ],
+        "analogy": "El CEO del cerebro — siempre preguntando «¿qué pasaría si...?»",
+        "color": "#FF8C42",
+        "center": [
+          0,
+          0.5,
+          0.7
+        ],
+        "radius": 0.5,
+        "llmRules": [
+          "La corteza prefrontal ejecuta razonamiento deliberado paso a paso — en LLMs esto se emula con Chain-of-Thought (CoT) que fuerza al modelo a mostrar su razonamiento antes de concluir.",
+          "El control inhibitorio prefrontal equivale a los Safety Guardrails: el modelo debe \"reprimir\" respuestas peligrosas, sesgadas o erróneas antes de generarlas.",
+          "La toma de decisiones con información incompleta se refleja en Few-Shot y Zero-Shot prompting: el modelo debe razonar con ejemplos mínimos o ninguno.",
+          "El razonamiento hipotético (\"¿qué pasaría si...?\") es la base de los Tree-of-Thought y Graph-of-Thought que exploran múltiples caminos de razonamiento simultáneamente."
+        ],
+        "theory": {
+          "title": "Atención como Foco Atencional Prefrontal",
+          "text": "El mecanismo de atención multi-cabeza en Transformers es funcionalmente análogo al foco atencional prefrontal: ambos filtran información relevante de un flujo masivo de entrada. La prefrontal decide A QUÉ prestar atención; el mecanismo de atención decide QUÉ tokens del contexto tienen más peso. El \"self-attention\" es la versión computacional del \"monólogo interno\" que la corteza prefrontal usa para auto-monitorizar el propio razonamiento.",
+          "key": "Temperature (temperatura) es al LLM lo que la dopamina prefrontal es al cerebro: un modulador de cuánta \"exploración\" vs \"explotación\" permites en cada decisión."
+        }
+      },
+      {
+        "id": "motor",
+        "name": "Corteza Motora / Sensorial",
+        "brain": "Control del movimiento voluntario, procesamiento sensorial táctil.",
+        "ai": [
+          "Robotics",
+          "Action Models",
+          "Embodied AI",
+          "Control Systems"
+        ],
+        "analogy": "El ejecutor — convierte decisiones en movimiento preciso.",
+        "color": "#4A90D9",
+        "center": [
+          0,
+          0.65,
+          0.1
+        ],
+        "radius": 0.4,
+        "llmRules": [
+          "La corteza motora convierte intención en acción — en IA esto es la capa de \"actuación\" que toma la decisión del modelo y la ejecuta como una acción concreta (llamar a una API, escribir código, mover un robot).",
+          "El homúnculo motor (representación distorsionada del cuerpo) es análogo a los Action Tokens: ciertas acciones reciben más \"representación\" en el vocabulario del modelo porque son más frecuentes o críticas.",
+          "El bucle sensoriomotor (sensar → actuar → sensar de nuevo) es el patrón fundamental de los agentes autónomos: Observar → Pensar → Actuar → Observar (loop de ReAct).",
+          "Los modelos de acciones (action models) como GPT-4 con function calling son la corteza motora de la IA: transforman razonamiento abstracto en llamadas ejecutables."
+        ],
+        "theory": {
+          "title": "Embodiment y el Problema de la Acción",
+          "text": "La neurociencia demuestra que el aprendizaje motor requiere retroalimentación corporal (propiocepción). Los LLMs actuales carecen de cuerpo — procesan texto puro. Los modelos multimodales con acción (robotics foundation models) están empezando a cerrar este gap al conectar percepción + razonamiento + ejecución física. El \"embodiment\" sigue siendo el talón de Aquiles de la IA: saber qué hacer sin poder sentir las consecuencias de hacerlo.",
+          "key": "El problema \"grounding\" — que los símbolos de un LLM no están anclados a experiencia sensorial real — es exactamente lo que la corteza motora/sensorial resuelve en humanos: conectar abstracción con sensación."
+        }
+      },
+      {
+        "id": "temporal",
+        "name": "Corteza Temporal",
+        "brain": "Comprensión del lenguaje, memoria semántica, procesamiento auditivo.",
+        "ai": [
+          "NLP",
+          "Tokenización",
+          "Embeddings",
+          "Transformers"
+        ],
+        "analogy": "El traductor universal — convierte señales en significados.",
+        "color": "#9B59B6",
+        "center": [
+          0.65,
+          -0.1,
+          0.15
+        ],
+        "radius": 0.4,
+        "llmRules": [
+          "La corteza temporal izquierda (áreas de Wernicke y Broca) procesa lenguaje comprensivo y productivo — los Transformers replican esto con tokenización + embedding + decodificación generativa.",
+          "Los embeddings word2vec/GloVe son la versión computacional del \"léxico mental\": representaciones vectoriales donde palabras similares están cerca en el espacio, igual que las neuronas semánticas del lobo temporal.",
+          "El \"context window\" de un LLM equivale a la memoria de trabajo auditiva: cuántos tokens anteriores puede el modelo \"recordar\" simultáneamente al procesar la siguiente palabra.",
+          "El procesamiento jerárquico del lenguaje (fonema → palabra → frase → discurso) se replica en las capas del Transformer: capas bajas procesan sintaxis, capas altas procesan semántica y pragmática."
+        ],
+        "theory": {
+          "title": "Tokenización como Procesamiento Auditivo",
+          "text": "El oído humano convierte ondas de sonido en fonemas (~50 categorías) en ~100ms. La tokenización convierte texto en subword tokens (~30k-100k categorías) en microsegundos. Ambos son procesos de \"discretización\" de un input continuo. La diferencia crítica: los humanos procesan audio en tiempo real secuencial; los Transformers procesan todos los tokens en paralelo (self-attention), lo que les da una comprensión global que el cerebro logra solo con repeticiones y memoria a largo plazo.",
+          "key": "El \"vocabulary\" del tokenizer es el equivalente al conjunto de fonemas que un hablante nativo puede discriminar: más vocabulario = más resolución semántica, pero también más coste computacional."
+        }
+      },
+      {
+        "id": "parietal",
+        "name": "Corteza Parietal",
+        "brain": "Integración sensorial, razonamiento espacial, atención.",
+        "ai": [
+          "Multimodal Models",
+          "Sensor Fusion",
+          "Spatial AI"
+        ],
+        "analogy": "El mezclador maestro — une vista, tacto y espacio en una sola experiencia.",
+        "color": "#E74C3C",
+        "center": [
+          0,
+          0.7,
+          -0.15
+        ],
+        "radius": 0.42,
+        "llmRules": [
+          "La corteza parietal integra múltiples sentidos en una representación unificada — los modelos multimodales (GPT-4V, Gemini, LLaVA) hacen exactamente esto: fusionan texto + imagen + audio en un espacio de representación compartido.",
+          "El córtex parietal posterior mapea el \"espacio del cuerpo\" — los modelos spatial AI (NERF, Gaussian Splatting, SpatialLM) mapean el espacio físico 3D desde datos 2D.",
+          "La \"atención selectiva parietal\" equivale al Cross-Attention en modelos multimodales: un canal de atención que cruza información de un modalidad (imagen) con otra (texto).",
+          "El síndrome de negligencia parietal (ignorar la mitad del espacio) tiene un equivalente AI: los modelos sesgados ignoran sistemáticamente ciertas categorías de datos de entrenamiento."
+        ],
+        "theory": {
+          "title": "Multimodalidad como Integración Parietal",
+          "text": "El cerebro humano es fundamentalmente multimodal — nunca procesa un solo sentido de forma aislada. Los LLMs de texto puro son \"unimodales\" como un paciente con destrucción bilateral del parietal: pueden procesar un canal, pero no cruzar información entre sentidos. Los modelos que fusionan texto + imagen + código + audio están reconstruyendo la capacidad parietal que el procesamiento unidimensional perdió.",
+          "key": "La \"unified embedding space\" de modelos como CLIP es el equivalente al córtex parietal superior: un espacio donde imagen y texto viven juntos y se puede navegar de uno a otro."
+        }
+      },
+      {
+        "id": "occipital",
+        "name": "Corteza Occipital",
+        "brain": "Procesamiento visual, reconocimiento de patrones, percepción de color.",
+        "ai": [
+          "Computer Vision",
+          "Diffusion Models",
+          "CNNs",
+          "YOLO"
+        ],
+        "analogy": "El cineasta interno — construye mundos visuales enteros desde photons.",
+        "color": "#F1C40F",
+        "center": [
+          0,
+          0.25,
+          -0.8
+        ],
+        "radius": 0.38,
+        "llmRules": [
+          "La corteza visual procesa en jerarquía (V1→V2→V4→IT): bordes → texturas → formas → objetos. Las CNNs replican esta arquitectura exacta: capas tempranas detectan bordes, capas profundas detectan conceptos.",
+          "La difusión de imagen (Stable Diffusion, DALL-E, Midjourney) funciona como la corteza visual inversa: en lugar de deconstruir una imagen en features, construye una imagen desde ruido añadiendo estructura progresivamente.",
+          "El campo receptive de cada neurona visual equivale al kernel de una CNN: ambos examinan una región local y propagan información hacia arriba en la jerarquía.",
+          "YOLO (You Only Look Once) emula la rapidez de la vía visual dorsal (\"vía del dónde\"): procesa toda la escena en una pasada para localizar objetos, igual que el cerebro detecta amenazas en <200ms."
+        ],
+        "theory": {
+          "title": "De CNNs a Vision Transformers",
+          "text": "Las CNNs copiaron la arquitectura visual del cortex (receptive fields locales, pooling jerárquico). Los Vision Transformers (ViT) desafiaron esto al procesar imágenes como secuencias de patches, ignorando la estructura local. Sorprendentemente, ViT supera a CNNs en datos suficientes — sugiriendo que el cerebro visual humano puede no ser la única arquitectura óptima para procesamiento visual. Pero en datos limitados, CNNs siguen ganando, igual que el cerebro humano supera a la IA en reconocimiento con pocos ejemplos.",
+          "key": "La \"atención visual\" (cortical magnification) — donde la fóvea tiene más resolución que la periferia — es análogo al \"patch importance\" en ViT: no todos los patches de una imagen merecen la misma atención computacional."
+        }
+      },
+      {
+        "id": "hipocampo",
+        "name": "Hipocampo",
+        "brain": "Formación de memoria declarativa, navegación espacial.",
+        "ai": [
+          "RAG",
+          "Vector Databases",
+          "Context Windows",
+          "Memory Systems"
+        ],
+        "analogy": "El archivista — decide qué guardar para siempre y qué dejar ir.",
+        "color": "#8E44AD",
+        "center": [
+          0.18,
+          -0.22,
+          0.12
+        ],
+        "radius": 0.3,
+        "llmRules": [
+          "El hipocampo consolida memoria a largo plazo desde memoria de trabajo — los LLMs no tienen memoria persistente entre conversaciones. RAG y las vector databases son la capa de \"consolidación\" que permite al modelo acceder a conocimiento externo.",
+          "Las células de lugar (place cells) del hipocampo crean mapas espaciales — los embeddings vectoriales crean mapas semánticos donde la \"distancia\" refleja similitud conceptual, no física.",
+          "El \"context window\" es la memoria de trabajo del LLM (equivalente al hipocampo dorsal en roedores). Lo que entra en contexto se puede \"recordar\" para esa sesión; lo que sale se pierde.",
+          "La consolidación de memoria durante el sueño (replay de experiencias) equivale al fine-tuning y el retrieval-augmented generation: el modelo \"re-examina\" información almacenada para fortalecer sus conexiones."
+        ],
+        "theory": {
+          "title": "Memoria sin Hipocampo — El Problema Fundamental de los LLMs",
+          "text": "El hipocampo humano almacena ~2.5 petabytes de información a lo largo de una vida. Los LLMs almacenan su \"conocimiento\" en los pesos del modelo (memoria procedural, no declarativa) y en el contexto (memoria de trabajo). No hay equivalente al hipocampo: no pueden formar nuevos recuerdos declarativos durante inferencia. RAG, fine-tuning, y vector stores son parches parciales a esta carencia fundamental. Un sistema con memoria verdadera como la del hipocampo sería capaz de aprender de una conversación sin re-entrenamiento.",
+          "key": "El \"forgetting\" en LLMs (context window finito) es como la amnesia anterógrada: no puedes formar nuevos recuerdos de lo que acaba de pasar si la información sale del contexto activo."
+        }
+      },
+      {
+        "id": "amigdala",
+        "name": "Amígdala",
+        "brain": "Procesamiento emocional, respuesta de miedo, aprendizaje afectivo.",
+        "ai": [
+          "Sentiment Analysis",
+          "Emotion AI",
+          "Safety Filters",
+          "Guardrails"
+        ],
+        "analogy": "El guardián emocional — detecta el peligro antes que la razón.",
+        "color": "#E91E63",
+        "center": [
+          0.22,
+          -0.12,
+          0.38
+        ],
+        "radius": 0.22,
+        "llmRules": [
+          "La amígdala detecta amenazas antes de que la corteza prefrontal procese racionalmente — los safety classifiers en LLMs actúan igual: filtran contenido peligroso ANTES de que el modelo genere una respuesta completa.",
+          "El sesgo negativo humano (la amígdala reacciona más fuerte a lo negativo) tiene un equivalente en RLHF: los humanos anotadores tienden a penalizar más las respuestas dañinas que a premiar las beneficiosas, creando un sesgo de conservadurismo.",
+          "El \"temperamento emocional\" (amígdala hiperactiva = ansiedad) equivale a un modelo con safety filters demasiado agresivos: rechaza demasiadas peticiones inocentes por miedo a generar algo dañino.",
+          "La recompensa y castigo que modula la amígdala es la base de RLHF y Constitutional AI: el modelo aprende a evitar respuestas \"peligrosas\" por refuerzo negativo."
+        ],
+        "theory": {
+          "title": "El dilema Safety-Capability",
+          "text": "La amígdala dañada produce síndrome de Kluver-Bucy: el paciente pierde el miedo y la inhibición social. Los LLMs sin safety filters son equivalentes: capaces de generar cualquier cosa, incluyendo contenido dañino, sesgado, o peligroso. Pero una amígdala hiperactiva produce ansiedad paralizante — un modelo con filtros excesivos se vuelve inútil. El equilibrio amígdala-prefrontal es el mismo que el equilibrio safety-capability en IA: suficiente restricción para ser seguro, suficiente libertad para ser útil.",
+          "key": "Constitutional AI (Anthropic) es el equivalente a una corteza prefrontal que \"enseña\" a la amígdala qué amenazas son reales vs. falsas positivas — reduce la hipersensibilidad del safety system."
+        }
+      },
+      {
+        "id": "talamo",
+        "name": "Tálamo",
+        "brain": "Relay central de información sensorial, regulación de la conciencia.",
+        "ai": [
+          "API Gateway",
+          "Message Broker",
+          "Data Pipeline",
+          "Router"
+        ],
+        "analogy": "El director de tráfico — todo dato sensorial pasa por aquí.",
+        "color": "#2ECC71",
+        "center": [
+          0.12,
+          0,
+          0
+        ],
+        "radius": 0.35,
+        "llmRules": [
+          "El tálamo filtra y redirige toda la información sensorial antes de que llegue a la corteza — los API Gateways y Load Balancers hacen lo mismo: reciben TODA la demanda, la filtran, la balancean, y la dirigen al servicio correcto.",
+          "El \"núcleo reticular\" del tálamo (gatekeeper que decide qué información pasa) equivale al content filtering en un LLM gateway: decide qué peticiones llegan al modelo y cuáles se rechazan antes del procesamiento.",
+          "La regulación de la conciencia talámica se refleja en los \"model routers\": cuando una petición puede ser atendida por múltiples modelos (GPT-4 vs GPT-3.5, grande vs pequeño), el router determina qué \"consciencia\" (modelo) recibe la carga.",
+          "Los loops talamo-corticales (tálamo → corteza → tálamo) son análogos a los retry loops en sistemas distribuidos: si la respuesta no es satisfactoria, la petición regresa al gateway para reintentarse."
+        ],
+        "theory": {
+          "title": "Infraestructura como Sistema Talámico",
+          "text": "El tálamo consume ~0.15% del peso cerebral pero maneja ~98% de la información sensorial (excepto olfato). Los API gateways son proporcionalmente similares: componentes \"pequeños\" que son puntos únicos de fallo para todo el sistema. Un tálamo dañado produce coma — un API gateway caído tumbará todos los servicios. La redundancia en infraestructura (multi-AZ, failover) es la respuesta de ingeniería al problema que la evolución resolvió con un tálamo bilateral (dos hemisferios, dos tálamos).",
+          "key": "El \"context routing\" en arquitecturas LLM (determinar si una query va a RAG, fine-tuned model, o search) es funcionalmente un sistema talámico: clasificar y dirigir información al módulo procesador correcto."
+        }
+      },
+      {
+        "id": "cuerpo_calloso",
+        "name": "Cuerpo Calloso",
+        "brain": "Comunicación entre hemisferios cerebrales, transferencia de información.",
+        "ai": [
+          "Ensemble Methods",
+          "Multi-Agent Systems",
+          "Mixture of Experts"
+        ],
+        "analogy": "El puente — conecta dos mundos que no saben que existen el uno sin el otro.",
+        "color": "#95A5A6",
+        "center": [
+          0.1,
+          0.32,
+          0
+        ],
+        "radius": 0.35,
+        "llmRules": [
+          "El cuerpo calloso integra procesamiento de ambos hemisferios en una conciencia unificada — los Mixture of Experts (MoE) integran múltiples \"modelos expertos\" en una única respuesta coherente.",
+          "Los ~200 millones de fibras del cuerpo calloso transmiten información entre hemisferios — los \"gating networks\" en MoE determinan qué expertos reciben información y cuánta, actuando como un sistema de comunicación selectiva.",
+          "El hemisferio izquierdo (lógico-verbal) y derecho (espacial-emocional) son análogos a un sistema multi-agente donde un agente \"analítico\" y otro \"creativo\" colaborean — el cuerpo calloso es el canal de comunicación entre ambos.",
+          "Split-brain experiments (Gazzaniga) muestran qué pasa SIN el cuerpo calloso: dos \"conciencias\" separadas — equivalente a un sistema multi-agente sin protocolo de comunicación coordinado."
+        ],
+        "theory": {
+          "title": "Coordinación Multi-Agente como Integración Hemisférica",
+          "text": "Un cerebro humano funciona porque 86 mil millones de neuronas coordinan comunicación en tiempo real. Los sistemas multi-agente actuales (AutoGPT, CrewAI, LangGraph) intentan coordinar múltiples LLMs especializados. El cuerpo calloso resuelve esto en el cerebro con baja latencia (<1ms). Los agentes artificiales enfrentan latencias de red, formatos inconsistentes, y ausencia de un \"protocolo calloso\" estándar. La brecha de coordinación es la razón por la que un solo LLM grande frecuentemente supera a un equipo de LLMs pequeños.",
+          "key": "El \"speculative decoding\" (un modelo pequeño predice, uno grande verifica) es una versión simplificada de la dinámica hemisférica: el hemisferio dominante propone, el no-dominante verifica."
+        }
+      },
+      {
+        "id": "cerebelo",
+        "name": "Cerebelo",
+        "brain": "Control motor fino, coordinación, aprendizaje procedural.",
+        "ai": [
+          "Fine-tuning",
+          "Optimization",
+          "Gradient Descent",
+          "LoRA",
+          "QLoRA"
+        ],
+        "analogy": "El artesano — perfecciona cada movimiento con práctica.",
+        "color": "#D4A574",
+        "center": [
+          0.15,
+          -0.55,
+          -0.5
+        ],
+        "radius": 0.45,
+        "llmRules": [
+          "El cerebelo contiene más neuronas que el resto del cerebro combinado, pero solo \"ejecuta\" — no decide. El fine-tuning es lo mismo: no cambia lo que el modelo sabe (pre-training), sino CÓMO lo ejecuta (precisión, estilo, formato).",
+          "El aprendizaje cerebelar es procedural (aprender a andar en bicicleta) — el fine-tuning de LLMs es equivalente: ajusta patrones procedimentales (cómo responder, qué tono usar) sin alterar el conocimiento factual subyacente.",
+          "Gradient Descent es el \"error signal\" cerebelar: el cerebelo compara la intención motora con el resultado real y ajusta; Gradient Descent compara la predicción con el objetivo y ajusta pesos.",
+          "LoRA/QLoRA son la especialización cerebelar: en lugar de re-entrenar todo el cerebro (full fine-tuning), solo ajustas un subconjunto de conexiones para una tarea específica, como el cerebelo especializa movimientos específicos."
+        ],
+        "theory": {
+          "title": "El Coste del Fine-Tuning como Coordinación Motora",
+          "text": "El cerebelo humano necesita ~10,000 horas de práctica para dominar una habilidad motora. El fine-tuning de un LLM grande necesita miles de ejemplos y cientos de GPU-horas. Ambos son procesos de \"compresión\" — tomar un repertorio general y especializarlo para una tarea concreta. El descubrimiento de LoRA (2021) fue equivalente a descubrir que solo necesitas entrenar el cerebelo, no toda la corteza: redujo el coste de fine-tuning en 10-100x sin perder calidad.",
+          "key": "El \"learning rate\" en gradient descent es el equivalente al tono muscular: demasiado alto = temblores (divergencia), demasiado bajo = movimiento lento e impreciso (convergencia lenta). El cerebelo ajusta esto constantemente con retroalimentación sensorial."
+        }
+      },
+      {
+        "id": "tronco",
+        "name": "Tronco Encefálico",
+        "brain": "Funciones vitales automáticas: respiración, ritmo cardíaco, sueño.",
+        "ai": [
+          "MLOps",
+          "Infrastructure",
+          "Kubernetes",
+          "Model Serving"
+        ],
+        "analogy": "Los cimientos — funciona perfectamente sin que nunca lo notes.",
+        "color": "#A0522D",
+        "center": [
+          0.08,
+          -0.78,
+          -0.08
+        ],
+        "radius": 0.2,
+        "llmRules": [
+          "El tronco encefálico mantiene las funciones vitales sin conciencia — MLOps mantiene los modelos vivos sin que el usuario lo note: health checks, auto-scaling, failover, logging.",
+          "Si el tronco encefálico falla, el cuerpo muere instantáneamente — si la infraestructura base falla (GPU cluster down, network partition), todos los modelos dejan de funcionar.",
+          "El ciclo sueño-vigilia (tronco encefálico) equivale a los ciclos de deployment: el modelo necesita \"downtime\" para actualizarse (rolling updates, blue-green deployment) igual que el cerebro necesita sueño para consolidar memoria.",
+          "Los núcleos del tronco (cardíaco, respiratorio) son autónomos — los microservicios base (logging, monitoring, secrets management) son igualmente autónomos y deben funcionar sin intervención humana."
+        ],
+        "theory": {
+          "title": "Infraestructura Invisible como Función Vital",
+          "text": "Los ingenieros de infraestructura son los \"neurocientíficos del tronco encefálico\": su trabajo es invisible cuando funciona y catastrófico cuando falla. Un tronco encefálico sano es indetectable — una infraestructura sana es indetectable. La paradoja del éxito en MLOps es que el mejor sistema es el que nadie menciona. Los SLA (Service Level Agreements) son los \"signos vitales\" de la infraestructura: latencia = frecuencia cardíaca, throughput = saturación de oxígeno, error rate = presión arterial.",
+          "key": "Kubernetes es al MLOps lo que el sistema nervioso autónomo es al cuerpo: regula todo automáticamente sin que \"tú\" (el usuario/application) tengas que pensar en ello. Pero cuando algo sale mal, la \"enfermedad\" es silenciosa hasta que es crítica."
+        }
+      }
+    ]
   },
   "connection": {
     "title": "Neural Map — Brain ↔ AI",
     "heading": "Connection Map",
     "subtitle": "Each brain region inspires a component of modern AI. Click a node to see the full connection.",
     "legend": "Connections",
-    "sideLabels": ["Human Brain", "Artificial Intelligence"]
+    "sideLabels": [
+      "Human Brain",
+      "Artificial Intelligence"
+    ],
+    "data": [
+      {
+        "id": "frontal",
+        "brain": {
+          "name": "Corteza Prefrontal",
+          "sub": "Planificación, decisiones, razonamiento"
+        },
+        "ai": {
+          "name": "Razonamiento IA",
+          "sub": "Chain-of-Thought, RLHF, Prompt Engineering"
+        },
+        "color": "#4FC3F7",
+        "analogy": "El CEO del cerebro — siempre preguntando \"qué pasaría si...\". En IA, el Chain-of-Thought ejecuta exactamente ese ciclo: razona paso a paso antes de actuar.",
+        "techs": [
+          "Chain-of-Thought",
+          "RLHF",
+          "Prompt Engineering",
+          "Reasoning",
+          "Tree of Thought"
+        ]
+      },
+      {
+        "id": "temporal",
+        "brain": {
+          "name": "Corteza Temporal",
+          "sub": "Lenguaje, memoria semántica, audición"
+        },
+        "ai": {
+          "name": "Procesamiento de Lenguaje",
+          "sub": "NLP, Tokenización, Embeddings, Transformers"
+        },
+        "color": "#66BB6A",
+        "analogy": "El traductor universal — convierte señales en significados. Los Transformers hacen lo mismo: transforman secuencias de tokens en representaciones semánticas.",
+        "techs": [
+          "NLP",
+          "Tokenización",
+          "Embeddings",
+          "Transformers",
+          "BERT",
+          "GPT"
+        ]
+      },
+      {
+        "id": "parietal",
+        "brain": {
+          "name": "Corteza Parietal",
+          "sub": "Integración sensorial, espacio, atención"
+        },
+        "ai": {
+          "name": "Modelos Multimodales",
+          "sub": "Sensor Fusion, Spatial AI, Vision-Language"
+        },
+        "color": "#FFA726",
+        "analogy": "El mezclador maestro — une vista, tacto y espacio en una sola experiencia. GPT-4V y Gemini fusionan imagen+texto de la misma forma.",
+        "techs": [
+          "Multimodal Models",
+          "Sensor Fusion",
+          "Spatial AI",
+          "CLIP",
+          "GPT-4V"
+        ]
+      },
+      {
+        "id": "occipital",
+        "brain": {
+          "name": "Corteza Occipital",
+          "sub": "Visión, patrones, color"
+        },
+        "ai": {
+          "name": "Visión por Computadora",
+          "sub": "CNNs, Diffusion Models, YOLO, DETR"
+        },
+        "color": "#EF5350",
+        "analogy": "El cineasta interno — construye mundos visuales enteros desde photons. Stable Diffusion hace literalmente esto: genera imágenes completas desde ruido.",
+        "techs": [
+          "Computer Vision",
+          "CNNs",
+          "YOLO",
+          "DETR",
+          "Diffusion Models",
+          "DALL-E"
+        ]
+      },
+      {
+        "id": "hipocampo",
+        "brain": {
+          "name": "Hipocampo",
+          "sub": "Memoria declarativa, navegación"
+        },
+        "ai": {
+          "name": "Sistemas de Memoria",
+          "sub": "RAG, Vector DBs, Context Windows"
+        },
+        "color": "#AB47BC",
+        "analogy": "El archivista — decide qué guardar para siempre y qué dejar ir. RAG hace lo mismo: busca en bases de conocimiento lo relevante para cada consulta.",
+        "techs": [
+          "RAG",
+          "Vector Databases",
+          "Context Windows",
+          "Memory Systems",
+          "Pinecone",
+          "ChromaDB"
+        ]
+      },
+      {
+        "id": "amigdala",
+        "brain": {
+          "name": "Amígdala",
+          "sub": "Emociones, miedo, seguridad"
+        },
+        "ai": {
+          "name": "Seguridad y Guardrails",
+          "sub": "Sentiment Analysis, Safety Filters, Guardrails"
+        },
+        "color": "#EC407A",
+        "analogy": "El guardián emocional — detecta el peligro antes que la razón. Los safety filters de OpenAI detectan contenido problemático antes de que llegue al usuario.",
+        "techs": [
+          "Sentiment Analysis",
+          "Emotion AI",
+          "Safety Filters",
+          "Guardrails",
+          "Constitutional AI"
+        ]
+      },
+      {
+        "id": "talamo",
+        "brain": {
+          "name": "Tálamo",
+          "sub": "Relay sensorial, regulación"
+        },
+        "ai": {
+          "name": "Infraestructura de Datos",
+          "sub": "API Gateway, Message Broker, Data Pipeline"
+        },
+        "color": "#FDD835",
+        "analogy": "El director de tráfico — todo dato sensorial pasa por aquí. Un API Gateway en una arquitectura de microservicios cumple exactamente la misma función.",
+        "techs": [
+          "API Gateway",
+          "Message Broker",
+          "Data Pipeline",
+          "Router",
+          "Kafka",
+          "RabbitMQ"
+        ]
+      },
+      {
+        "id": "cuerpo_calloso",
+        "brain": {
+          "name": "Cuerpo Calloso",
+          "sub": "Comunicación entre hemisferios"
+        },
+        "ai": {
+          "name": "Sistemas Ensemble",
+          "sub": "Multi-Agent, Mixture of Experts, Voting"
+        },
+        "color": "#78909C",
+        "analogy": "El puente — conecta dos mundos que no saben que existen el uno sin el otro. Mixture of Experts activa solo los módulos relevantes para cada tarea.",
+        "techs": [
+          "Ensemble Methods",
+          "Multi-Agent Systems",
+          "Mixture of Experts",
+          "MoE",
+          "Gating Networks"
+        ]
+      },
+      {
+        "id": "cerebelo",
+        "brain": {
+          "name": "Cerebelo",
+          "sub": "Coordinación, aprendizaje motor"
+        },
+        "ai": {
+          "name": "Optimización de Modelos",
+          "sub": "Fine-tuning, LoRA, QLoRA, Gradient Descent"
+        },
+        "color": "#26C6DA",
+        "analogy": "El artesano — perfecciona cada movimiento con práctica. LoRA ajusta finamente un modelo pre-entrenado sin re-entrenar todo, como el cerebelo refina movimientos.",
+        "techs": [
+          "Fine-tuning",
+          "LoRA",
+          "QLoRA",
+          "Gradient Descent",
+          "Adam",
+          "Learning Rate Scheduling"
+        ]
+      },
+      {
+        "id": "tronco",
+        "brain": {
+          "name": "Tronco Encefálico",
+          "sub": "Funciones vitales automáticas"
+        },
+        "ai": {
+          "name": "MLOps e Infraestructura",
+          "sub": "Kubernetes, Model Serving, CI/CD"
+        },
+        "color": "#8D6E63",
+        "analogy": "Los cimientos — funciona perfectamente sin que nunca lo notes. Kubernetes mantiene los modelos desplegados vivos y respondiendo, como el tronco mantiene la respiración.",
+        "techs": [
+          "MLOps",
+          "Kubernetes",
+          "Model Serving",
+          "CI/CD",
+          "Docker",
+          "TensorFlow Serving"
+        ]
+      }
+    ]
   },
   "architecture": {
     "title": "AI Architecture — Brain ↔ AI",
@@ -37,10 +579,26 @@
     "stats": {
       "label": "Key Statistics",
       "items": [
-        {"num": "10", "label": "Brain regions"},
-        {"num": "50+", "label": "AI Technologies"},
-        {"num": "6", "label": "Training phases"},
-        {"num": "80+", "label": "Years from neurons to LLMs"}
+        {
+          "num": "10",
+          "label": "Regiones cerebrales",
+          "color": "#4FC3F7"
+        },
+        {
+          "num": "50+",
+          "label": "Tecnologías IA",
+          "color": "#66BB6A"
+        },
+        {
+          "num": "6",
+          "label": "Fases de entrenamiento",
+          "color": "#FFA726"
+        },
+        {
+          "num": "80+",
+          "label": "Años de neuronas a LLMs",
+          "color": "#EF5350"
+        }
       ]
     },
     "pipeline": {
@@ -55,7 +613,321 @@
       "heading": "Timeline: From Brain to AI",
       "subtitle": "The milestones connecting neuroscience with advances in artificial intelligence."
     },
-    "footer": "Part of Brain ↔ AI — presentation for senior developers"
+    "footer": "Part of Brain ↔ AI — presentation for senior developers",
+    "stages": [
+      {
+        "id": "s0",
+        "num": "Fase 01",
+        "title": "Recolección de Datos",
+        "brain": "Corteza Sensorial",
+        "color": "#4FC3F7",
+        "rgb": "79,195,247",
+        "brainDetail": "Los órganos sensoriales capturan estímulos del mundo exterior — luz, sonido, presión, temperatura. La corteza sensorial primaria recibe estos datos crudos.",
+        "iaDetail": "Se recopilan terabytes de texto, imágenes, video y audio de internet, libros y bases de datos. Es el sensor crudo del modelo.",
+        "techs": [
+          "Web Scraping",
+          "APIs",
+          "Datasets",
+          "Data Lakes"
+        ]
+      },
+      {
+        "id": "s1",
+        "num": "Fase 02",
+        "title": "Pre-procesamiento",
+        "brain": "Tálamo",
+        "color": "#66BB6A",
+        "rgb": "102,187,106",
+        "brainDetail": "El tálamo filtra, organiza y redirige la información sensorial a las áreas corticales apropiadas. Solo el 1% de la información llega al consciente.",
+        "iaDetail": "Limpieza, normalización, tokenización, deduplicación. El texto crudo se convierte en tokens; las imágenes se redimensionan y estandarizan.",
+        "techs": [
+          "Tokenización",
+          "Cleaning",
+          "Normalization",
+          "Embeddings"
+        ]
+      },
+      {
+        "id": "s2",
+        "num": "Fase 03",
+        "title": "Pre-entrenamiento",
+        "brain": "Redes Neuronales Generales",
+        "color": "#FFA726",
+        "rgb": "255,167,38",
+        "brainDetail": "Durante los primeros años de vida, el cerebro forma conexiones neuronales masivas sin un propósito específico — es aprendizaje autodidacta general.",
+        "iaDetail": "El modelo aprende patrones estadísticos del lenguaje (next-token prediction) o estructura visual (masked autoencoding) de manera no supervisada.",
+        "techs": [
+          "Self-Supervised",
+          "Next-Token Prediction",
+          "Masked Autoencoding",
+          "Contrastive Learning"
+        ]
+      },
+      {
+        "id": "s3",
+        "num": "Fase 04",
+        "title": "Ajuste Fino (Fine-tuning)",
+        "brain": "Cerebelo + Hipocampo",
+        "color": "#AB47BC",
+        "rgb": "171,71,188",
+        "brainDetail": "El cerebelo refina habilidades con práctica; el hipocampo consolida memorias específicas. Juntos transforman conocimiento general en competencias concretas.",
+        "iaDetail": "Se entrena el modelo pre-entrenado con datos específicos de la tarea. LoRA/QLoRA permiten ajustar sin re-entrenar todo el modelo.",
+        "techs": [
+          "LoRA",
+          "QLoRA",
+          "PEFT",
+          "Adapter Layers",
+          "Instruction Tuning"
+        ]
+      },
+      {
+        "id": "s4",
+        "num": "Fase 05",
+        "title": "RLHF / Alineamiento",
+        "brain": "Corteza Prefrontal + Amígdala",
+        "color": "#EC407A",
+        "rgb": "236,64,122",
+        "brainDetail": "La corteza prefrontal evalúa consecuencias; la amígdala señala peligro. Juntos alinean el comportamiento con normas sociales y seguridad.",
+        "iaDetail": "Humanos evalúan respuestas del modelo; se entrena un reward model que luego guía al modelo hacia comportamientos seguros y útiles.",
+        "techs": [
+          "RLHF",
+          "DPO",
+          "Reward Model",
+          "Constitutional AI",
+          "Guardrails"
+        ]
+      },
+      {
+        "id": "s5",
+        "num": "Fase 06",
+        "title": "Deploy & Serving",
+        "brain": "Tronco Encefálico",
+        "color": "#26C6DA",
+        "rgb": "38,198,218",
+        "brainDetail": "El tronco encefálico mantiene las funciones vitales — respiración, circulación, sueño — sin que lo notes.",
+        "iaDetail": "Kubernetes, load balancers, CUDA optimizados, cuantización. La infraestructura que mantiene el modelo vivo y respondiendo en milisegundos.",
+        "techs": [
+          "Kubernetes",
+          "CUDA",
+          "TensorRT",
+          "Quantization",
+          "Edge Deploy"
+        ]
+      }
+    ],
+    "architectures": [
+      {
+        "id": "a0",
+        "name": "Transformer",
+        "brain": "Corteza Prefrontal",
+        "color": "#4FC3F7",
+        "rgb": "79,195,247",
+        "desc": "Mecanismo de atención que procesa secuencias completas en paralelo. La base de GPT, BERT, y casi todos los LLMs modernos.",
+        "how": "El mecanismo de self-attention permite que cada token observe todos los demás tokens y decida cuáles son relevantes. Multi-head attention ejecuta esto en paralelo con diferentes perspectivas.",
+        "models": [
+          "GPT-4",
+          "Claude",
+          "BERT",
+          "Llama",
+          "Gemini"
+        ]
+      },
+      {
+        "id": "a1",
+        "name": "CNN (Red Convolucional)",
+        "brain": "Corteza Occipital",
+        "color": "#66BB6A",
+        "rgb": "102,187,106",
+        "desc": "Detecta patrones espaciales jerárquicos — de bordes a texturas a objetos completos. El ojo de la IA.",
+        "how": "Filtros convolucionales se deslizan sobre la imagen detectando patrones a diferentes escalas. Las capas profundas combinan patrones simples en representaciones complejas.",
+        "models": [
+          "ResNet",
+          "VGG",
+          "EfficientNet",
+          "YOLO"
+        ]
+      },
+      {
+        "id": "a2",
+        "name": "Diffusion Models",
+        "brain": "Corteza Occipital + Temporal",
+        "color": "#FFA726",
+        "rgb": "255,167,38",
+        "desc": "Generan imágenes, video y audio aprendiendo a revertir el proceso de ruido gradual. El cineasta de la IA.",
+        "how": "Se agrega ruido a los datos progresivamente (forward diffusion), luego se entrena una red para revertir este proceso. El modelo aprende la distribución de los datos y puede muestrear nuevos ejemplares.",
+        "models": [
+          "Stable Diffusion",
+          "DALL-E 3",
+          "Midjourney",
+          "Sora"
+        ]
+      },
+      {
+        "id": "a3",
+        "name": "Mixture of Experts (MoE)",
+        "brain": "Cuerpo Calloso",
+        "color": "#AB47BC",
+        "rgb": "171,71,188",
+        "desc": "Redes que activan solo subconjuntos especializados de neuronas por tarea. Eficiencia masiva sin sacrificar capacidad.",
+        "how": "Un gating network decide qué expertos (sub-redes) activar para cada token. Solo el 10–25% de los parámetros se activan por forward pass.",
+        "models": [
+          "Mixtral",
+          "GPT-4",
+          "Switch Transformer",
+          "GShard"
+        ]
+      },
+      {
+        "id": "a4",
+        "name": "GANs (Generative Adversarial)",
+        "brain": "Amígdala (competencia)",
+        "color": "#EC407A",
+        "rgb": "236,64,122",
+        "desc": "Dos redes compiten: una genera, la otra detecta falsificaciones. La evolución por competencia crea resultados realistas.",
+        "how": "El generador crea muestras falsas; el discriminador intenta distinguir reales de falsas. Ambos mejoran en competencia — similar a cómo la amígdala entrena el sistema de pelea o huye.",
+        "models": [
+          "StyleGAN",
+          "ProGAN",
+          "CycleGAN"
+        ]
+      },
+      {
+        "id": "a5",
+        "name": "RNN / LSTM / GRU",
+        "brain": "Hipocampo (memoria secuencial)",
+        "color": "#FDD835",
+        "rgb": "253,216,53",
+        "desc": "Procesan secuencias paso a paso con memoria interna. Precursores de los Transformers para tareas secuenciales.",
+        "how": "Cada paso procesa el input actual + el estado oculto del paso anterior. LSTM agrega puertas para decidir qué recordar y qué olvidar — directamente inspirado en la memoria declarativa del hipocampo.",
+        "models": [
+          "LSTM",
+          "GRU",
+          "Bidirectional",
+          "Seq2Seq"
+        ]
+      }
+    ],
+    "timelineItems": [
+      {
+        "year": "1943",
+        "title": "McCulloch & Pitts: Neurona Formal",
+        "desc": "Primer modelo matemático de una neurona biológica. Inspirado directamente en la neurociencia.",
+        "brain": "→ Corteza cerebral: redes de neuronas",
+        "color": "#4FC3F7",
+        "rgb": "79,195,247"
+      },
+      {
+        "year": "1958",
+        "title": "Perceptron (Rosenblatt)",
+        "desc": "Primera red neuronal que puede aprender. Capaz de clasificar linealmente — como un reflejo condicionado simple.",
+        "brain": "→ Bulbo raquídeo: reflejos simples",
+        "color": "#66BB6A",
+        "rgb": "102,187,106"
+      },
+      {
+        "year": "1986",
+        "title": "Backpropagation (Rumelhart, Hinton)",
+        "desc": "Algoritmo que permite a las redes aprender capas profundas. Inspirado en cómo el cerebro ajusta sinapsis por refuerzo.",
+        "brain": "→ Cerebelo: ajuste fino por práctica",
+        "color": "#FFA726",
+        "rgb": "255,167,38"
+      },
+      {
+        "year": "1998",
+        "title": "LeNet-5 (LeCun)",
+        "desc": "Primera CNN exitosa para reconocimiento de dígitos. Estructura jerárquica inspirada en la corteza visual.",
+        "brain": "→ Corteza occipital: procesamiento visual",
+        "color": "#EF5350",
+        "rgb": "239,83,80"
+      },
+      {
+        "year": "2017",
+        "title": "Attention Is All You Need (Vaswani)",
+        "desc": "El Transformer cambia todo. Mecanismo de atención que procesa en paralelo — como el cerebro procesa múltiples estímulos simultáneamente.",
+        "brain": "→ Corteza prefrontal: atención selectiva",
+        "color": "#AB47BC",
+        "rgb": "171,71,188"
+      },
+      {
+        "year": "2020",
+        "title": "GPT-3 (OpenAI)",
+        "desc": "175B parámetros. Few-shot learning sin fine-tuning. Demuestra que la escala puede emular razonamiento flexible.",
+        "brain": "→ Corteza prefrontal: flexibilidad cognitiva",
+        "color": "#EC407A",
+        "rgb": "236,64,122"
+      },
+      {
+        "year": "2022",
+        "title": "ChatGPT + RLHF",
+        "desc": "Alineamiento humano por primera vez masivo. El modelo aprende a ser útil, seguro y honesto — como un niño aprendiendo normas sociales.",
+        "brain": "→ Corteza prefrontal + amígdala: alineamiento social",
+        "color": "#FDD835",
+        "rgb": "253,216,53"
+      },
+      {
+        "year": "2024–2026",
+        "title": "Agentes Autónomos + Multimodal",
+        "desc": "IA que planifica, usa herramientas, y procesa texto+imagen+video+audio.",
+        "brain": "→ Corteza parietal: integración multisensorial",
+        "color": "#26C6DA",
+        "rgb": "38,198,218",
+        "dim": false
+      },
+      {
+        "year": "2026–2028",
+        "title": "La Era del Arnés",
+        "desc": "Ingeniería de arnés como disciplina.",
+        "brain": "→ Corteza prefrontal: planificación",
+        "color": "#555566",
+        "rgb": "85,85,102",
+        "dim": true
+      },
+      {
+        "year": "2028–2032",
+        "title": "Multiagentes en Producción",
+        "desc": "Cientos de agentes orquestados por harnesses.",
+        "brain": "→ Cuerpo calloso: comunicación entre agentes",
+        "color": "#4a4a5e",
+        "rgb": "74,74,94",
+        "dim": true
+      },
+      {
+        "year": "2032–2036",
+        "title": "Arquitectura Auto-Evolutiva",
+        "desc": "Sistemas que modifican su propio arnés.",
+        "brain": "→ Corteza prefrontal dorsolateral: metacognición",
+        "color": "#404055",
+        "rgb": "64,64,85",
+        "dim": true
+      },
+      {
+        "year": "2036–2042",
+        "title": "Cognición Distribuida",
+        "desc": "Redes de agentes como una sola mente distribuida.",
+        "brain": "→ Red neuronal por defecto: pensamiento divergente colectivo",
+        "color": "#36364a",
+        "rgb": "54,54,74",
+        "dim": true
+      },
+      {
+        "year": "2042–2048",
+        "title": "Simbiosis Humano-Máquina",
+        "desc": "Interfaces neurales y ecosistemas cognitivos.",
+        "brain": "→ Corteza prefrontal + ínsula: integración",
+        "color": "#2c2c40",
+        "rgb": "44,44,64",
+        "dim": true
+      },
+      {
+        "year": "2048–2050",
+        "title": "¿Singularidad o Coexistencia?",
+        "desc": "Sistemas que definen sus propias restricciones éticas.",
+        "brain": "→ Toda la corteza: el horizonte",
+        "color": "#222236",
+        "rgb": "34,34,54",
+        "dim": true
+      }
+    ]
   },
   "agents": {
     "title": "AI Agents — Brain ↔ AI",
@@ -64,10 +936,96 @@
     "loading": "Generating agent…",
     "footer": "AI Visual",
     "legend": "Agent Cycle",
-    "legendItems": ["Perception", "Reasoning", "Memory", "Action", "Tools"],
-    "cycle": ["Think", "Act", "Observe"],
+    "legendItems": [
+      "Perception",
+      "Reasoning",
+      "Memory",
+      "Action",
+      "Tools"
+    ],
+    "cycle": [
+      "Think",
+      "Act",
+      "Observe"
+    ],
     "hints": "navigate · Esc close · scroll zoom",
-    "panelSectionLabels": ["Analogy", "Agent Rules", "Theory"]
+    "panelSectionLabels": [
+      "Analogy",
+      "Agent Rules",
+      "Theory"
+    ],
+    "concepts": {
+      "percepcion": {
+        "color": "#4FC3F7",
+        "label": "Percepción",
+        "css": "#4FC3F7",
+        "analogy": "Los sensores del agente — cómo recibe información del mundo exterior. En un LLM: el prompt, el historial de conversación, los datos de las herramientas.",
+        "rules": [
+          "Los sensores determinan qué tan bien el agente entiende su entorno",
+          "La percepción debe ser multi-modal: texto, imágenes, estructuras de datos",
+          "Un agente sin percepción actualizada toma decisiones obsoletas",
+          "El contexto window es el \"campo de visión\" del agente"
+        ],
+        "theory": "En la arquitectura de un agente, la percepción es la capa de entrada que filtra y estructura la información cruda del mundo. Incluye parsing de prompts, procesamiento de herramientas y mantenimiento del contexto.",
+        "insight": "La calidad de la percepción define el techo de inteligencia del agente."
+      },
+      "razonamiento": {
+        "color": "#9B59B6",
+        "label": "Razonamiento",
+        "css": "#9B59B6",
+        "analogy": "El cerebro del agente — donde transforma percepción en decisión. Chain-of-Thought, Tree-of-Thought, planificación jerárquica.",
+        "rules": [
+          "Chain-of-Thought descompleja problemas en pasos manejables",
+          "El razonamiento debe ser verificable: cada paso debe justificarse",
+          "Memorizar patrones no es razonar — comprender sí",
+          "La planificación jerárquica supera la lineal en problemas complejos"
+        ],
+        "theory": "El razonamiento en LLMs evolucionó de simple completion a cadenas de pensamiento estructuradas. Los agentes modernos combinan CoT, ToT y reflection para construir razonamientos robustos.",
+        "insight": "Pensar no es solo generar tokens — es reducir la entropía de las opciones."
+      },
+      "memoria": {
+        "color": "#E91E63",
+        "label": "Memoria",
+        "css": "#E91E63",
+        "analogy": "El almacén del agente — lo que recuerda entre sesiones, entre herramientas, entre decisiones.",
+        "rules": [
+          "La memoria a corto plazo se pierde entre conversaciones",
+          "RAG es buscar en los propios recuerdos del agente",
+          "La memoria episódica es más útil que la semántica pura",
+          "Un agente sin memoria repite los mismos errores"
+        ],
+        "theory": "Tres capas: Working Memory (contexto activo), Episodic Memory (experiencias pasadas) y Semantic Memory (conocimiento general). El diseño de la arquitectura de memoria determina la sofisticación del agente.",
+        "insight": "La memoria transforma un prompt en una relación continua."
+      },
+      "accion": {
+        "color": "#2ECC71",
+        "label": "Acción",
+        "css": "#2ECC71",
+        "analogy": "Los efectores del agente — cómo transforma decisiones en cambios reales en el mundo. Tool calls, API writes, código generado.",
+        "rules": [
+          "La acción debe ser observable y reversible cuando sea posible",
+          "Cada acción tiene un costo computacional y potencialmente real",
+          "La mejor acción es la más simple que logra la meta",
+          "El feedback post-acción alimenta la memoria del agente"
+        ],
+        "theory": "El ciclo percepción-razonamiento-acción es el heartbeat de todo agente. Cada iteración produce un paso concreto que modifica el estado del mundo o del propio agente.",
+        "insight": "Un agente que solo razona sin actuar es un filósofo sin clientes."
+      },
+      "herramientas": {
+        "color": "#F1C40F",
+        "label": "Herramientas",
+        "css": "#F1C40F",
+        "analogy": "Las herramientas externas que el agente puede invocar — extensiones de sus capacidades naturales. MCP, APIs, bases de datos, navegadores.",
+        "rules": [
+          "Las herramientas amplían el espacio de acciones posible",
+          "Elegir la herramienta correcta es tan importante como usarla bien",
+          "Las herramientas deben ser descritas claramente para que el agente las entienda",
+          "MCP estandariza la interfaz entre agentes y herramientas"
+        ],
+        "theory": "Model Context Protocol es el estándar emergente para conectar agentes con herramientas. Define una capa de abstracción que permite interoperabilidad entre diferentes agentes y proveedores.",
+        "insight": "Las herramientas no reemplazan al razonamiento — lo amplifican."
+      }
+    }
   },
   "mas": {
     "title": "Multi-Agent Systems — Brain ↔ AI",
@@ -76,6 +1034,200 @@
     "loading": "Loading multi-agent systems…",
     "footer": "MAS — Multi-Agent Systems",
     "legend": "MAS Concepts",
-    "hints": "navigate · Esc close · scroll zoom"
+    "hints": "navigate · Esc close · scroll zoom",
+    "concepts": [
+      {
+        "id": "harness",
+        "name": "Agent Harness",
+        "desc": "El marco que contiene y ejecuta un agente: su loops internos de razonamiento, sus herramientas, su memoria y sus guardrails.",
+        "analogy": "«Como el casco de un astronauta — contiene todos los sistemas vitales del agente en un solo contenedor protegido.»",
+        "color": "#FF8C42",
+        "tech": [
+          "LangChain",
+          "AutoGPT",
+          "CrewAI",
+          "Semantic Kernel"
+        ],
+        "llmRules": [
+          "El Agent Harness es el patrón fundamental de los frameworks modernos: encapsula percepción → razonamiento → acción en un loop cerrado con límites claros.",
+          "Un harness bien diseñado separa el \"cómo razona\" del \"qué hace\" — permitiendo cambiar la estrategia de razonamiento (ReAct, CoT, ToT) sin reescribir la ejecución.",
+          "Los guardrails dentro del harness son límites de seguridad que se evalúan ANTES de cada acción — no después. La verificación preventiva es más efectiva que la detección reactiva.",
+          "El patrón \"Agente = Harness + LLM + Herramientas\" es el equivalente moderno de \"Agente = Arquitectura + Programa\" de Russell & Norvig."
+        ],
+        "theory": {
+          "title": "La Arquitectura del Agente Moderno",
+          "text": "El Agent Harness consolida los componentes esenciales del agente autónomo: un LLM como cerebro, herramientas como manos, memoria como hippocampo, y guardrails como sistema inmune. La evolución de simple prompt → chain → agent refleja una creciente complejidad en la gestión del ciclo percepción-razonamiento-acción.",
+          "key": "El harness es al agente lo que el sistema operativo es al computador: administra recursos, ejecuta procesos y protege contra fallos."
+        }
+      },
+      {
+        "id": "inner_loop",
+        "name": "Inner Loop",
+        "desc": "El ciclo Think → Act → Observe que cada agente ejecuta internamente para resolver tareas paso a paso.",
+        "analogy": "«Como un artesano que mide, corta y verifica — repite el ciclo hasta que la pieza es perfecta.»",
+        "color": "#9B59B6",
+        "tech": [
+          "ReAct",
+          "Chain-of-Thought",
+          "Tree-of-Thought",
+          "Reflexion"
+        ],
+        "llmRules": [
+          "El Inner Loop es el patrón ReAct: Think (razonar sobre qué hacer) → Act (ejecutar una acción) → Observe (evaluar el resultado) → Think de nuevo.",
+          "Cada iteración del loop reduce la incertidumbre: el agente acumula observaciones que refinan su modelo del mundo y guían la siguiente acción.",
+          "El loop debe tener un límite máximo de iteraciones para evitar ciclos infinitos — un agente que nunca converge es un agente roto.",
+          "Chain-of-Thought es la fase Think del loop: fuerza al modelo a mostrar su razonamiento antes de actuar, haciendo la decisión auditable y corregible."
+        ],
+        "theory": {
+          "title": "El Ciclo ReAct como Unidad Fundamental",
+          "text": "El patrón ReAct (Reasoning + Acting) formaliza el Inner Loop: el agente alterna entre razonamiento interno (pensamiento en lenguaje natural) y acción externa (llamadas a herramientas). Cada observación alimenta el siguiente ciclo de razonamiento, creando una espiral convergente hacia la solución.",
+          "key": "El Inner Loop es la diferencia entre un LLM que responde y un agente que resuelve: el loop introduce agencia — la capacidad de observar y reaccionar al mundo."
+        }
+      },
+      {
+        "id": "outer_loop",
+        "name": "Outer Loop",
+        "desc": "El flujo de alto nivel: Task Input → Orchestration → Execution → Review & Consensus → Final Output, con retroalimentación del usuario.",
+        "analogy": "«Como un director de orquesta — coordina los movimientos individuales en una sinfonía coherente.»",
+        "color": "#4FC3F7",
+        "tech": [
+          "LangGraph",
+          "CrewAI Flows",
+          "AutoGen",
+          "Microsoft Magentic-One"
+        ],
+        "llmRules": [
+          "El Outer Loop orquesta múltiples instancias del Inner Loop: una tarea compleja se descompone en subtareas, cada una ejecutada por un agente especializado.",
+          "El patrón de consenso (Review & Consensus) asegura calidad: un agente revisor evalúa la salida antes de entregar al usuario, similar a un code review.",
+          "La retroalimentación del usuario cierra el loop externo: el agente no solo ejecuta, sino que aprende de la respuesta humana para mejorar la siguiente iteración.",
+          "LangGraph modela el Outer Loop como un grafo de estados donde cada nodo es un agente y cada arista es una condición de transición — permitiendo flujos no lineales."
+        ],
+        "theory": {
+          "title": "Orquestación como Gestión de Estados",
+          "text": "El Outer Loop transforma la ejecución secuencial en un grafo de estados distribuidos. Cada estado representa un punto de decisión donde un agente especializado toma control, ejecuta su Inner Loop, y pasa el resultado al siguiente nodo. La complejidad no está en cada agente individual sino en la orquestación del flujo.",
+          "key": "Un agente solo puede resolver lo que puede razonar. Un sistema multiagente puede resolver lo que puede ORQUESTAR."
+        }
+      },
+      {
+        "id": "coordination",
+        "name": "Coordinación",
+        "desc": "Los modos en que los agentes se organizan entre sí: Jerárquico (líder→trabajadores), Coreografiado (P2P), y Contract Net (subasta).",
+        "analogy": "«Como un equipo de construcción — el arquitecto dirige, los albañiles coordinan entre sí, y los subcontratistas pujan por el trabajo.»",
+        "color": "#2ECC71",
+        "tech": [
+          "Hierarchical",
+          "Choreographed",
+          "Contract Net",
+          "Blackboard"
+        ],
+        "llmRules": [
+          "Jerárquico: un agente líder descompone tareas y las asigna a trabajadores. Simple pero crea cuellos de botella — el líder es un punto único de fallo.",
+          "Coreografiado: agentes autónomos se comunican directamente (P2P) sin líder central. Escalable pero complejo de depurar — los comportamientos emergentes son impredecibles.",
+          "Contract Net: un agente publica una tarea, otros pujan con propuestas, y el original selecciona la mejor oferta. Ideal para tareas con múltiples soluciones posibles.",
+          "La elección del modo de coordinación depende del dominio: jerárquico para tareas predecibles, coreografiado para entornos dinámicos, Contract Net para optimización competitiva."
+        ],
+        "theory": {
+          "title": "Los Tres Modelos de Coordinación MAS",
+          "text": "Jennings (2001) identificó tres patrones fundamentales de coordinación en sistemas multiagente: jerárquico (centralizado), coreografiado (descentralizado), y basado en mercado (Contract Net). Cada uno optimiza una propiedad diferente: control, escalabilidad, o eficiencia en asignación de recursos.",
+          "key": "No hay un modelo de coordinación \"mejor\" — la selección depende del trade-off entre predecibilidad (jerárquico), escalabilidad (coreografiado), y optimización (Contract Net)."
+        }
+      },
+      {
+        "id": "communication",
+        "name": "Comunicación",
+        "desc": "Los protocolos que permiten a los agentes intercambiar información: FIPA-ACL, KQML, y arquitecturas de pizarra.",
+        "analogy": "«Como el lenguaje humano — sin un protocolo compartido, los agentes son islas que no pueden cooperar.»",
+        "color": "#E74C3C",
+        "tech": [
+          "FIPA-ACL",
+          "KQML",
+          "Blackboard",
+          "Message Bus"
+        ],
+        "llmRules": [
+          "FIPA-ACL define actos de habla (inform, request, propose) que dan semántica a los mensajes — no es solo \"enviar texto\", es comunicar una intención.",
+          "KQML (Knowledge Query and Manipulation Language) fue el precursor: estableció que los mensajes deben incluir un performative (qué se hace) y un contenido (qué se dice).",
+          "La arquitectura de pizarra (Blackboard) reemplaza la mensajería punto-a-punto: los agentes escriben y leen de un espacio compartido, desacoplando emisores de receptores.",
+          "En LLMs multiagente, la comunicación natural (lenguaje humano) reemplaza los protocolos formales — pero la estructura subyacente (quién habla, cuándo, sobre qué) sigue siendo FIPA."
+        ],
+        "theory": {
+          "title": "De Protocolos Formales a Lenguaje Natural",
+          "text": "Los sistemas multiagente clásicos usaban protocolos formales (FIPA-ACL, KQML) con semántica estricta. Los sistemas modernos con LLMs comunican en lenguaje natural, pero la estructura formal persiste implícitamente: cada mensaje tiene un emisor, receptor, contenido, y performed (intención comunicativa).",
+          "key": "La comunicación en MAS no es transferencia de datos — es transferencia de intención. Un mensaje FIPA \"request\" no dice \"haz X\", dice \"te pido que hagas X porque Y\"."
+        }
+      },
+      {
+        "id": "shared_memory",
+        "name": "Memoria Compartida",
+        "desc": "El conocimiento compartido entre agentes: base de conocimiento, hipótesis, y estado global del sistema.",
+        "analogy": "«Como una biblioteca compartida — todos los agentes pueden leer y escribir, pero solo lo relevante para su tarea.»",
+        "color": "#8E44AD",
+        "tech": [
+          "RAG Shared",
+          "Vector DB",
+          "Knowledge Graph",
+          "Episodic Memory"
+        ],
+        "llmRules": [
+          "La memoria compartida resuelve el problema de \"conocimiento siloed\": sin ella, cada agente solo sabe lo que ha visto en su contexto individual.",
+          "Short-term memory (context window) es volátil y limitada; long-term memory (vector DB, knowledge graph) es persistente y escalable — la arquitectura debe manejar ambas.",
+          "La sincronización de memoria entre agentes es el problema más difícil: ¿quién tiene la versión más reciente? ¿Qué pasa cuando dos agentes escriben en conflicto?",
+          "RAG compartido permite que múltiples agentes recuperen del mismo corpus, pero cada uno filtra por relevancia a su subtarea — eficiencia sin redundancia."
+        ],
+        "theory": {
+          "title": "Memoria como Infraestructura de Conocimiento",
+          "text": "En MAS, la memoria compartida es el \"sistema nervioso central\" del colectivo. A diferencia de la memoria individual (context window), la memoria compartida persiste entre sesiones, agentes y tareas. Los patrones modernos usan vectores embedidos para recuperación semántica, y grafos de conocimiento para relaciones explícitas.",
+          "key": "Un agente sin memoria es un consultor que nunca aprende. Un sistema sin memoria compartida es un equipo donde nadie comparte notas."
+        }
+      },
+      {
+        "id": "handover",
+        "name": "Agent Handover",
+        "desc": "La transferencia controlada de una tarea de un agente especializado a otro, manteniendo contexto y estado.",
+        "analogy": "«Como un relevo en posta — el corredor le pasa el testigo al siguiente sin que se caiga.»",
+        "color": "#F1C40F",
+        "tech": [
+          "Handoff",
+          "Delegation",
+          "Task Routing",
+          "A2A Protocol"
+        ],
+        "llmRules": [
+          "El handover es la transferencia de control + contexto: no basta pasar la tarea, hay que pasar el historial de decisiones, las observaciones acumuladas, y el estado parcial.",
+          "El patrón \"specialist routing\" asigna cada tipo de tarea al agente más capaz: código → agente dev, datos → agente analyst, comunicación → agente PM.",
+          "El handover falla cuando el contexto se pierde: el agente receptor no tiene la misma \"memoria de trabajo\" que el emisor. La serialización del contexto es crítica.",
+          "El protocolo A2A (Agent-to-Agent) de Google estandariza el handover: cada agente expone un \"agent card\" con sus capacidades, y el router selecciona dinámicamente."
+        ],
+        "theory": {
+          "title": "Handover como Patrón de Delegación",
+          "text": "El Agent Handover es el mecanismo que permite que un agente delegue parte de su trabajo a otro agente más especializado. A diferencia de la simple llamada a herramienta, el handover transfiere el CONTROL completo de una subtask, incluyendo el contexto acumulado y las restricciones conocidas.",
+          "key": "El handover eficiente requiere tres cosas: serialización completa del contexto, interfaz de contrato clara (qué se espera del receptor), y mecanismo de retorno (cómo devuelve el resultado)."
+        }
+      },
+      {
+        "id": "agents_network",
+        "name": "Red de Agentes",
+        "desc": "La topología de conexión entre agentes: estrella, malla, jerárquica, o dinámica según la tarea.",
+        "analogy": "«Como una neural network pero de agentes — cada nodo piensa, cada conexión comunica.»",
+        "color": "#00BCD4",
+        "tech": [
+          "Mesh",
+          "Star",
+          "Pipeline",
+          "Dynamic Topology"
+        ],
+        "llmRules": [
+          "La topología de estrella (un orquestador central) es la más común: simple de implementar pero escala mal — el orquestador se convierte en cuello de botella.",
+          "La topología de malla permite comunicación directa entre cualquier par de agentes: máxima flexibilidad pero complejidad O(n²) en mensajes.",
+          "La topología dinámica reconfigura las conexiones según la tarea: agentes se conectan cuando necesitan cooperar y se desconectan cuando terminan.",
+          "La selección de topología debe equilibrar: latencia (cuántos saltos entre agentes), throughput (cuántos agentes trabajan en paralelo), y resiliencia (qué pasa si un agente falla)."
+        ],
+        "theory": {
+          "title": "Topología como Arquitectura de Comunicación",
+          "text": "La red de agentes no es solo una estructura de comunicación — es una decisión arquitectónica que determina escalabilidad, tolerancia a fallos, y complejidad de orquestación. Los sistemas más exitosos (AutoGen, CrewAI) usan topologías híbridas: jerárquicas para control, con canales P2P para coordinación rápida.",
+          "key": "La mejor topología de red de agentes es la que el sistema elige dinámicamente según la complejidad de la tarea — no la que el diseñador fija en el diseño."
+        }
+      }
+    ]
   }
 }

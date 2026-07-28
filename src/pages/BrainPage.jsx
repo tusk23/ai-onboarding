@@ -3,11 +3,11 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import SiteNav from '../components/SiteNav.jsx';
 import { useI18n } from '../i18n/index.jsx';
-import { REGIONS } from '../data/regions.js';
 import './brain.css';
 
 export default function BrainPage() {
   var { t } = useI18n();
+  var REGIONS = t('brain.regions');
   const containerRef = useRef(null);
   const loadingRef = useRef(null);
   const legendRef = useRef(null);
