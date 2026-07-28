@@ -2,10 +2,12 @@ import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import SiteNav from '../components/SiteNav.jsx';
+import { useI18n } from '../i18n/index.jsx';
 import { REGIONS } from '../data/regions.js';
 import './brain.css';
 
 export default function BrainPage() {
+  var { t } = useI18n();
   const containerRef = useRef(null);
   const loadingRef = useRef(null);
   const legendRef = useRef(null);
@@ -16,7 +18,7 @@ export default function BrainPage() {
   const resizeRef = useRef(null);
 
   useEffect(() => {
-    document.title = 'Cerebro 3D — Cerebro ↔ IA';
+    document.title = t('brain.title');
 
     const container = containerRef.current;
     const loadingEl = loadingRef.current;
@@ -420,17 +422,17 @@ export default function BrainPage() {
   return (
     <div className="page-brain">
       <div className="loading" id="loading" ref={loadingRef}>
-        <div className="loading-text">Generando cerebro…</div>
+        <div className="loading-text">{t('brain.loading')}</div>
         <div className="loading-bar"><div className="loading-fill"></div></div>
       </div>
       <div id="scene-container" ref={containerRef}></div>
       <SiteNav brand="Cerebro ↔ IA" />
       <div className="title-bar">
-        <h1>Cerebro Humano → Inteligencia Artificial</h1>
-        <p>Corte sagittal · Gira 360° · Haz clic en una región para explorar</p>
+        <h1>{t('brain.heading')}</h1>
+        <p>{t('brain.subtitle')}</p>
       </div>
       <div className="legend" id="legend" ref={legendRef}>
-        <div className="legend-head">Regiones</div>
+        <div className="legend-head">{t('brain.legend')}</div>
       </div>
       <div className="hover-label" id="hover-label" ref={hoverLabelRef}></div>
       <div className="info-panel" id="info-panel" ref={infoPanelRef}>
@@ -439,7 +441,7 @@ export default function BrainPage() {
         <div id="info-content" ref={infoContentRef}></div>
       </div>
       <div className="hints">
-        <kbd>←</kbd> <kbd>→</kbd> navegar · <kbd>Esc</kbd> cerrar · scroll zoom
+        <kbd>←</kbd> <kbd>→</kbd> {t('brain.hints')}
       </div>
     </div>
   );

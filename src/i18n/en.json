@@ -1,0 +1,81 @@
+{
+  "_lang": "en",
+  "_name": "English",
+  "app": {
+    "watermark": "© 2026 tusk23 — AI Onboarding"
+  },
+  "nav": {
+    "brand": "Brain ↔ AI",
+    "links": {
+      "arquitectura": "AI Architecture",
+      "cerebro": "Brain 3D",
+      "conexiones": "Neural Map",
+      "agentes": "AI Agents",
+      "multiagente": "Multi-Agent Sys."
+    }
+  },
+  "brain": {
+    "title": "Brain 3D — Brain ↔ AI",
+    "heading": "Human Brain → Artificial Intelligence",
+    "subtitle": "Sagittal cut · 360° rotate · Click a region to explore",
+    "loading": "Generating brain…",
+    "legend": "Regions",
+    "hints": "navigate · Esc close · scroll zoom"
+  },
+  "connection": {
+    "title": "Neural Map — Brain ↔ AI",
+    "heading": "Connection Map",
+    "subtitle": "Each brain region inspires a component of modern AI. Click a node to see the full connection.",
+    "legend": "Connections",
+    "sideLabels": ["Human Brain", "Artificial Intelligence"]
+  },
+  "architecture": {
+    "title": "AI Architecture — Brain ↔ AI",
+    "heading": "Modern AI Architecture",
+    "subtitle": "How training methods, network architectures, and production systems reflect the way the brain learns and processes information.",
+    "skipNav": "Skip to content",
+    "stats": {
+      "label": "Key Statistics",
+      "items": [
+        {"num": "10", "label": "Brain regions"},
+        {"num": "50+", "label": "AI Technologies"},
+        {"num": "6", "label": "Training phases"},
+        {"num": "80+", "label": "Years from neurons to LLMs"}
+      ]
+    },
+    "pipeline": {
+      "heading": "Training Pipeline",
+      "subtitle": "Each phase of AI model training has a direct analogue in how the brain processes and learns information."
+    },
+    "archSection": {
+      "heading": "Key Architectures",
+      "subtitle": "The modern neural network architectures that form the foundation of today's AI."
+    },
+    "timeline": {
+      "heading": "Timeline: From Brain to AI",
+      "subtitle": "The milestones connecting neuroscience with advances in artificial intelligence."
+    },
+    "footer": "Part of Brain ↔ AI — presentation for senior developers"
+  },
+  "agents": {
+    "title": "AI Agents — Brain ↔ AI",
+    "heading": "AI Agents — The Autonomous Cycle",
+    "subtitle": "Perception → Reasoning → Decision → Action",
+    "loading": "Generating agent…",
+    "footer": "AI Visual",
+    "legend": "Agent Cycle",
+    "legendItems": ["Perception", "Reasoning", "Memory", "Action", "Tools"],
+    "cycle": ["Think", "Act", "Observe"],
+    "hints": "navigate · Esc close · scroll zoom",
+    "panelSectionLabels": ["Analogy", "Agent Rules", "Theory"]
+  },
+  "mas": {
+    "title": "Multi-Agent Systems — Brain ↔ AI",
+    "heading": "Multi-Agent Systems — MAS",
+    "subtitle": "Coordination · Communication · Orchestration · Click a concept",
+    "loading": "Loading multi-agent systems…",
+    "footer": "MAS — Multi-Agent Systems",
+    "legend": "MAS Concepts",
+    "hints": "navigate · Esc close · scroll zoom"
+  }
+}

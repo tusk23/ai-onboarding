@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import SiteNav from '../components/SiteNav.jsx';
+import { useI18n } from '../i18n/index.jsx';
 import './mas.css';
 
 var CONCEPTS = [
@@ -168,6 +169,7 @@ var CONCEPTS = [
 ];
 
 export default function MasPage() {
+  var { t } = useI18n();
   const containerRef = useRef(null);
   const legendRef = useRef(null);
   const hoverLabelRef = useRef(null);
@@ -179,7 +181,7 @@ export default function MasPage() {
   const loadingRef = useRef(null);
 
   useEffect(() => {
-    document.title = 'Sistemas Multiagente — Cerebro ↔ IA';
+    document.title = t('mas.title');
 
     const container = containerRef.current;
     const label = hoverLabelRef.current;
@@ -2069,17 +2071,16 @@ export default function MasPage() {
   return (
     <div className="page-mas">
       <div className="loading" ref={loadingRef}>
-        <div className="loading-text">Cargando sistemas multiagente…</div>
+        <div className="loading-text">{t('mas.loading')}</div>
         <div className="loading-bar"><div className="loading-fill"></div></div>
       </div>
-      <div id="scene-container" ref={containerRef}></div>
       <SiteNav brand="Cerebro ↔ IA" />
       <div className="title-bar">
-        <h1><span>Sistemas Multiagente</span> — MAS</h1>
-        <p>Coordinación · Comunicación · Orquestación · Haz clic en un concepto</p>
+        <h1><span>{t('mas.heading').split(' — ')[0]}</span> — {t('mas.heading').split(' — ')[1]}</h1>
+        <p>{t('mas.subtitle')}</p>
       </div>
-      <div className="legend" id="legend" ref={legendRef} role="list" aria-label="Conceptos MAS">
-        <div className="legend-head">Conceptos MAS</div>
+      <div className="legend" id="legend" ref={legendRef} role="list" aria-label={t('mas.legend')}>
+        <div className="legend-head">{t('mas.legend')}</div>
       </div>
       <div className="hover-label" id="hover-label" ref={hoverLabelRef}></div>
       <div className="info-panel" id="info-panel" ref={infoPanelRef} role="dialog" aria-label="Detalle del concepto" aria-modal="true" aria-hidden="true">
@@ -2089,9 +2090,9 @@ export default function MasPage() {
       </div>
       <div className="hints">
         <span ref={camDebugRef} className="cam-debug"></span>
-        <kbd>←</kbd> <kbd>→</kbd> navegar · <kbd>Esc</kbd> cerrar · scroll zoom
+        <kbd>←</kbd> <kbd>→</kbd> {t('mas.hints')}
       </div>
-      <div className="footer">MAS — Sistemas Multiagente</div>
+      <div className="footer">{t('mas.footer')}</div>
     </div>
   );
 }

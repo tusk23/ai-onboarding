@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import SiteNav from '../components/SiteNav';
+import { useI18n } from '../i18n/index.jsx';
 import './architecture.css';
 
 const stages = [
@@ -83,8 +84,9 @@ const stats = [
 ];
 
 export default function ArchitecturePage() {
+  var { t } = useI18n();
   useEffect(() => {
-    document.title = 'Arquitectura IA — Cerebro ↔ IA';
+    document.title = t('architecture.title');
   }, []);
 
   const [expanded, setExpanded] = useState(new Set());
@@ -107,13 +109,13 @@ export default function ArchitecturePage() {
 
   return (
     <div className="page-architecture">
-      <a href="#content" className="skip-nav">Saltar al contenido</a>
+      <a href="#content" className="skip-nav">{t('architecture.skipNav')}</a>
       <SiteNav brand="Cerebro ↔ IA" />
 
       <main id="content">
         <div className="hero">
           <h1>Arquitectura de la <span>IA Moderna</span></h1>
-          <p>Cómo los métodos de entrenamiento, arquitecturas de red y sistemas de producción reflejan la forma en que el cerebro aprende y procesa información.</p>
+          <p>{t('architecture.subtitle')}</p>
         </div>
 
         <div className="content">
@@ -128,8 +130,8 @@ export default function ArchitecturePage() {
 
           <section className="pipeline-section" aria-labelledby="pipeline-heading">
             <div className="section-header">
-              <h2 id="pipeline-heading">Pipeline de <span>Entrenamiento</span></h2>
-              <p>Cada fase del entrenamiento de un modelo de IA tiene un análogo directo en cómo el cerebro procesa y aprende información.</p>
+              <h2 id="pipeline-heading">{t('architecture.pipeline.heading')} <span>{t('architecture.pipeline.heading').split(' ').pop()}</span></h2>
+              <p>{t('architecture.pipeline.subtitle')}</p>
             </div>
 
             <div className="pipeline" role="list" aria-label="Fases del pipeline">
@@ -168,8 +170,8 @@ export default function ArchitecturePage() {
 
           <section className="arch-section" aria-labelledby="arch-heading">
             <div className="section-header">
-              <h2 id="arch-heading">Arquitecturas <span>Clave</span></h2>
-              <p>Las arquitecturas de redes neuronales modernas que forman la base de la IA actual.</p>
+              <h2 id="arch-heading">{t('architecture.archSection.heading')}</h2>
+              <p>{t('architecture.archSection.subtitle')}</p>
             </div>
 
             <div className="arch-grid">
@@ -210,8 +212,8 @@ export default function ArchitecturePage() {
 
           <section className="timeline-section" aria-labelledby="timeline-heading">
             <div className="section-header">
-              <h2 id="timeline-heading">Línea Temporal: Del <span>Cerebro</span> a la IA</h2>
-              <p>Los hitos que conectan la neurociencia con los avances en inteligencia artificial.</p>
+              <h2 id="timeline-heading">{t('architecture.timeline.heading')}</h2>
+              <p>{t('architecture.timeline.subtitle')}</p>
             </div>
 
             <div className="timeline" role="list" aria-label="Línea temporal de IA">
@@ -231,7 +233,7 @@ export default function ArchitecturePage() {
 
       <footer className="page-footer">
         <div className="footer-inner">
-          <div className="footer-left">Parte de Cerebro ↔ IA — presentación para desarrolladores senior</div>
+          <div className="footer-left">{t('architecture.footer')}</div>
           <div className="footer-links">
             <NavLink to="/">Arquitectura IA</NavLink>
             <NavLink to="/cerebro">Cerebro 3D</NavLink>

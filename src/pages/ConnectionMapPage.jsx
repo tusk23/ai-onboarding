@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import SiteNav from '../components/SiteNav';
+import { useI18n } from '../i18n/index.jsx';
 import './connection.css';
 
 const DATA = [
@@ -27,9 +28,10 @@ export default function ConnectionMapPage() {
   const svgRef = useRef(null);
   const mountRef = useRef(true);
   const [selected, setSelected] = useState(null);
+  var { t } = useI18n();
 
   useEffect(() => {
-    document.title = 'Mapa Neural — Cerebro ↔ IA';
+    document.title = t('connection.title');
     return () => { mountRef.current = false; };
   }, []);
 

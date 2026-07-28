@@ -597,12 +597,12 @@
 }
 
 .page-architecture .tl-dim {
-  opacity: 0.65;
+  opacity: 0.75;
   pointer-events: none;
   transition: opacity 0.3s;
 }
 .page-architecture .tl-dim:hover {
-  opacity: 0.75;
+  opacity: 0.85;
 }
 .page-architecture .tl-dim .tl-dot {
   box-shadow: none;

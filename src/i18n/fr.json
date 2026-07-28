@@ -1,0 +1,81 @@
+{
+  "_lang": "fr",
+  "_name": "Français",
+  "app": {
+    "watermark": "© 2026 tusk23 — AI Onboarding"
+  },
+  "nav": {
+    "brand": "Cerveau ↔ IA",
+    "links": {
+      "arquitectura": "Architecture IA",
+      "cerebro": "Cerveau 3D",
+      "conexiones": "Carte Neuronale",
+      "agentes": "Agents IA",
+      "multiagente": "Syst. Multi-agents"
+    }
+  },
+  "brain": {
+    "title": "Cerveau 3D — Cerveau ↔ IA",
+    "heading": "Cerveau Humain → Intelligence Artificielle",
+    "subtitle": "Coupe sagittale · Rotation 360° · Cliquez sur une région pour explorer",
+    "loading": "Génération du cerveau…",
+    "legend": "Régions",
+    "hints": "naviguer · Esc fermer · molette zoom"
+  },
+  "connection": {
+    "title": "Carte Neuronale — Cerveau ↔ IA",
+    "heading": "Carte des Connexions",
+    "subtitle": "Chaque région du cerveau inspire un composant de l'IA moderne. Cliquez sur un nœud pour voir la connexion complète.",
+    "legend": "Connexions",
+    "sideLabels": ["Cerveau Humain", "Intelligence Artificielle"]
+  },
+  "architecture": {
+    "title": "Architecture IA — Cerveau ↔ IA",
+    "heading": "Architecture de l'IA Moderne",
+    "subtitle": "Comment les méthodes d'entraînement, les architectures réseau et les systèmes de production reflètent la façon dont le cerveau apprend et traite l'information.",
+    "skipNav": "Passer au contenu",
+    "stats": {
+      "label": "Statistiques clés",
+      "items": [
+        {"num": "10", "label": "Régions cérébrales"},
+        {"num": "50+", "label": "Technologies IA"},
+        {"num": "6", "label": "Phases d'entraînement"},
+        {"num": "80+", "label": "Années des neurones aux LLMs"}
+      ]
+    },
+    "pipeline": {
+      "heading": "Pipeline d'Entraînement",
+      "subtitle": "Chaque phase de l'entraînement d'un modèle d'IA a un analogue direct dans la façon dont le cerveau traite et apprend l'information."
+    },
+    "archSection": {
+      "heading": "Architectures Clés",
+      "subtitle": "Les architectures de réseaux de neurones modernes qui forment la base de l'IA actuelle."
+    },
+    "timeline": {
+      "heading": "Chronologie : Du Cerveau à l'IA",
+      "subtitle": "Les jalons qui relient les neurosciences aux avancées de l'intelligence artificielle."
+    },
+    "footer": "Partie de Cerveau ↔ IA — présentation pour développeurs seniors"
+  },
+  "agents": {
+    "title": "Agents IA — Cerveau ↔ IA",
+    "heading": "Agents IA — Le Cycle Autonome",
+    "subtitle": "Perception → Raisonnement → Décision → Action",
+    "loading": "Génération de l'agent…",
+    "footer": "IA Visuelle",
+    "legend": "Cycle de l'Agent",
+    "legendItems": ["Perception", "Raisonnement", "Mémoire", "Action", "Outils"],
+    "cycle": ["Penser", "Agir", "Observer"],
+    "hints": "naviguer · Esc fermer · molette zoom",
+    "panelSectionLabels": ["Analogie", "Règles pour agents", "Théorie"]
+  },
+  "mas": {
+    "title": "Systèmes Multi-agents — Cerveau ↔ IA",
+    "heading": "Systèmes Multi-agents — SMA",
+    "subtitle": "Coordination · Communication · Orchestration · Cliquez sur un concept",
+    "loading": "Chargement des systèmes multi-agents…",
+    "footer": "SMA — Systèmes Multi-agents",
+    "legend": "Concepts SMA",
+    "hints": "naviguer · Esc fermer · molette zoom"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "_lang": "es",
+  "_name": "Español",
+  "app": {
+    "watermark": "© 2026 tusk23 — AI Onboarding"
+  },
+  "nav": {
+    "brand": "Cerebro ↔ IA",
+    "links": {
+      "arquitectura": "Arquitectura IA",
+      "cerebro": "Cerebro 3D",
+      "conexiones": "Mapa Neural",
+      "agentes": "Agentes Autónomos",
+      "multiagente": "Sist. Multiagente"
+    }
+  },
+  "brain": {
+    "title": "Cerebro 3D — Cerebro ↔ IA",
+    "heading": "Cerebro Humano → Inteligencia Artificial",
+    "subtitle": "Corte sagittal · Gira 360° · Haz clic en una región para explorar",
+    "loading": "Generando cerebro…",
+    "legend": "Regiones",
+    "hints": "navegar · Esc cerrar · scroll zoom"
+  },
+  "connection": {
+    "title": "Mapa Neural — Cerebro ↔ IA",
+    "heading": "Mapa de Conexiones",
+    "subtitle": "Cada región del cerebro inspira un componente de la IA moderna. Haz clic en un nodo para ver la conexión completa.",
+    "legend": "Conexiones",
+    "sideLabels": ["Cerebro Humano", "Inteligencia Artificial"]
+  },
+  "architecture": {
+    "title": "Arquitectura IA — Cerebro ↔ IA",
+    "heading": "Arquitectura de la IA Moderna",
+    "subtitle": "Cómo los métodos de entrenamiento, arquitecturas de red y sistemas de producción reflejan la forma en que el cerebro aprende y procesa información.",
+    "skipNav": "Saltar al contenido",
+    "stats": {
+      "label": "Estadísticas clave",
+      "items": [
+        {"num": "10", "label": "Regiones cerebrales"},
+        {"num": "50+", "label": "Tecnologías IA"},
+        {"num": "6", "label": "Fases de entrenamiento"},
+        {"num": "80+", "label": "Años de neuronas a LLMs"}
+      ]
+    },
+    "pipeline": {
+      "heading": "Pipeline de Entrenamiento",
+      "subtitle": "Cada fase del entrenamiento de un modelo de IA tiene un análogo directo en cómo el cerebro procesa y aprende información."
+    },
+    "archSection": {
+      "heading": "Arquitecturas Clave",
+      "subtitle": "Las arquitecturas de redes neuronales modernas que forman la base de la IA actual."
+    },
+    "timeline": {
+      "heading": "Línea Temporal: Del Cerebro a la IA",
+      "subtitle": "Los hitos que conectan la neurociencia con los avances en inteligencia artificial."
+    },
+    "footer": "Parte de Cerebro ↔ IA — presentación para desarrolladores senior"
+  },
+  "agents": {
+    "title": "Agentes Autónomos — Cerebro ↔ IA",
+    "heading": "Agentes IA — El Ciclo Autónomo",
+    "subtitle": "Percepción → Razonamiento → Decisión → Acción",
+    "loading": "Generando agente…",
+    "footer": "IA Visual",
+    "legend": "Ciclo del Agente",
+    "legendItems": ["Percepción", "Razonamiento", "Memoria", "Acción", "Herramientas"],
+    "cycle": ["Think", "Act", "Observe"],
+    "hints": "navegar · Esc cerrar · scroll zoom",
+    "panelSectionLabels": ["Analogía", "Reglas para agentes", "Teoría"]
+  },
+  "mas": {
+    "title": "Sistemas Multiagente — Cerebro ↔ IA",
+    "heading": "Sistemas Multiagente — MAS",
+    "subtitle": "Coordinación · Comunicación · Orquestación · Haz clic en un concepto",
+    "loading": "Cargando sistemas multiagente…",
+    "footer": "MAS — Sistemas Multiagente",
+    "legend": "Conceptos MAS",
+    "hints": "navegar · Esc cerrar · scroll zoom"
+  }
+}

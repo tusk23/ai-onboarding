@@ -2,9 +2,11 @@ import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import SiteNav from '../components/SiteNav.jsx';
+import { useI18n } from '../i18n/index.jsx';
 import './agents.css';
 
 export default function AgentsPage() {
+  var { t } = useI18n();
   const containerRef = useRef(null);
   const loadingRef = useRef(null);
   const hoverLabelRef = useRef(null);
@@ -16,7 +18,7 @@ export default function AgentsPage() {
   const resizeHandleRef = useRef(null);
 
   useEffect(() => {
-    document.title = 'Agentes Autónomos — Cerebro ↔ IA';
+    document.title = t('agents.title');
 
     const container = containerRef.current;
     const loadingEl = loadingRef.current;
@@ -552,27 +554,27 @@ export default function AgentsPage() {
     <div className="page-agents">
       <div id="scene-container" ref={containerRef}></div>
       <div className="loading" ref={loadingRef}>
-        <div className="loading-text">Generando agente…</div>
+        <div className="loading-text">{t('agents.loading')}</div>
         <div className="loading-bar"><div className="loading-fill"></div></div>
       </div>
 
-      <a href="#main" className="skip-nav">Saltar al contenido</a>
+      <a href="#main" className="skip-nav">{t('architecture.skipNav')}</a>
 
       <SiteNav brand="Cerebro ↔ IA" />
 
       <main id="main">
         <div id="hero">
-          <h1><span>Agentes IA</span> — El ciclo autónomo</h1>
-          <div className="subtitle" id="heroSubtitle">Percepción → Razonamiento → Decisión → Acción</div>
+          <h1><span>{t('agents.heading').split(' — ')[0]}</span> — {t('agents.heading').split(' — ')[1]}</h1>
+          <div className="subtitle" id="heroSubtitle">{t('agents.subtitle')}</div>
         </div>
 
         <div id="legend" ref={legendRef} role="list" aria-label="Conceptos">
-          <div className="section-label">Ciclo del Agente</div>
-          <div className="item" data-concept="percepcion" role="listitem" tabIndex={0}><div className="dot" style={{ background: '#4FC3F7' }}></div><div className="label">Percepción</div></div>
-          <div className="item" data-concept="razonamiento" role="listitem" tabIndex={0}><div className="dot" style={{ background: '#9B59B6' }}></div><div className="label">Razonamiento</div></div>
-          <div className="item" data-concept="memoria" role="listitem" tabIndex={0}><div className="dot" style={{ background: '#E91E63' }}></div><div className="label">Memoria</div></div>
-          <div className="item" data-concept="accion" role="listitem" tabIndex={0}><div className="dot" style={{ background: '#2ECC71' }}></div><div className="label">Acción</div></div>
-          <div className="item" data-concept="herramientas" role="listitem" tabIndex={0}><div className="dot" style={{ background: '#F1C40F' }}></div><div className="label">Herramientas</div></div>
+          <div className="section-label">{t('agents.legend')}</div>
+          <div className="item" data-concept="percepcion" role="listitem" tabIndex={0}><div className="dot" style={{ background: '#4FC3F7' }}></div><div className="label">{t('agents.legendItems')[0]}</div></div>
+          <div className="item" data-concept="razonamiento" role="listitem" tabIndex={0}><div className="dot" style={{ background: '#9B59B6' }}></div><div className="label">{t('agents.legendItems')[1]}</div></div>
+          <div className="item" data-concept="memoria" role="listitem" tabIndex={0}><div className="dot" style={{ background: '#E91E63' }}></div><div className="label">{t('agents.legendItems')[2]}</div></div>
+          <div className="item" data-concept="accion" role="listitem" tabIndex={0}><div className="dot" style={{ background: '#2ECC71' }}></div><div className="label">{t('agents.legendItems')[3]}</div></div>
+          <div className="item" data-concept="herramientas" role="listitem" tabIndex={0}><div className="dot" style={{ background: '#F1C40F' }}></div><div className="label">{t('agents.legendItems')[4]}</div></div>
           <div className="divider"></div>
         </div>
 
@@ -586,7 +588,7 @@ export default function AgentsPage() {
         </div>
 
         <div id="hoverLabel" ref={hoverLabelRef} aria-hidden="true"></div>
-        <div id="footer">IA Visual</div>
+        <div id="footer">{t('agents.footer')}</div>
       </main>
     </div>
   );
