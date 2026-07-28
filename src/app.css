@@ -11,3 +11,7 @@
   letter-spacing: 0.03em;
   white-space: nowrap;
 }
+
+.nav-links .nav-future {
+  opacity: 0.4;
+}

@@ -1,0 +1,211 @@
+/* ═══════════════════════════════════════════════════════════════
+   FUTURE PROJECTION 2026-2050 — subtle, dim, almost invisible
+   ═══════════════════════════════════════════════════════════════ */
+.page-future {
+  min-height: 100vh;
+  background: #080a0e;
+  color: rgba(255,255,255,0.12);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.page-future .nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 30;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px; height: 48px;
+  background: rgba(8,10,14,0.92); backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.page-future .nav-brand {
+  font: 700 12px/1 'JetBrains Mono', 'Fira Code', monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.15);
+}
+.page-future .nav-links { display: flex; gap: 2px; }
+.page-future .nav-links a {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 12px; border-radius: 6px; text-decoration: none;
+  font: 500 11.5px/1 -apple-system, system-ui, sans-serif;
+  color: rgba(255,255,255,0.08); transition: all 0.15s;
+}
+.page-future .nav-links a:hover { background: rgba(255,255,255,0.02); color: rgba(255,255,255,0.12); }
+.page-future .nav-links a.active {
+  background: rgba(255,255,255,0.03);
+  color: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Hero */
+.future-hero {
+  padding: 100px 32px 40px;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.future-hero h1 {
+  font: 700 36px/1.15 -apple-system, system-ui, sans-serif;
+  color: rgba(255,255,255,0.08);
+  letter-spacing: -0.025em;
+  margin-bottom: 12px;
+}
+.future-hero h1 .dim { color: rgba(255,255,255,0.04); }
+.future-hero-sub {
+  font: 400 14px/1.5 -apple-system, system-ui, sans-serif;
+  color: rgba(255,255,255,0.06);
+  margin-bottom: 6px;
+}
+.future-hero-note {
+  font: 400 11px/1 'JetBrains Mono', monospace;
+  color: rgba(255,255,255,0.03);
+  letter-spacing: 0.04em;
+}
+
+/* Timeline */
+.future-timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px 32px 60px;
+}
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255,255,255,0.03);
+  transform: translateX(-50%);
+}
+
+.timeline-phase {
+  position: relative;
+  margin-bottom: 48px;
+}
+.timeline-phase:last-child { margin-bottom: 0; }
+
+.phase-marker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid;
+  background: #080a0e;
+  top: 24px;
+}
+.phase-year {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font: 400 9px/1 'JetBrains Mono', monospace;
+  color: rgba(255,255,255,0.04);
+  white-space: nowrap;
+  letter-spacing: 0.06em;
+}
+
+.phase-card {
+  width: calc(50% - 30px);
+  margin-left: auto;
+  padding: 20px 22px;
+  border: 1px solid;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.01);
+  transition: all 0.3s;
+}
+.phase-card:hover {
+  background: rgba(255,255,255,0.015);
+  border-color: rgba(255,255,255,0.04) !important;
+}
+.timeline-phase:nth-child(odd) .phase-card {
+  margin-left: 0;
+  margin-right: auto;
+}
+.timeline-phase:nth-child(even) .phase-card {
+  margin-left: auto;
+  margin-right: 0;
+}
+.timeline-phase:nth-child(odd) .phase-year {
+  left: auto;
+  right: -50px;
+  transform: none;
+}
+.timeline-phase:nth-child(even) .phase-year {
+  left: -50px;
+  transform: none;
+}
+
+.phase-header {
+  margin-bottom: 10px;
+}
+.phase-header h2 {
+  font: 600 18px/1.2 -apple-system, system-ui, sans-serif;
+  color: rgba(255,255,255,0.08);
+  letter-spacing: -0.01em;
+  margin-bottom: 2px;
+}
+.phase-subtitle {
+  font: 400 10px/1 'JetBrains Mono', monospace;
+  color: rgba(255,255,255,0.03);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.phase-desc {
+  font: 400 13px/1.6 -apple-system, system-ui, sans-serif;
+  color: rgba(255,255,255,0.06);
+  margin-bottom: 14px;
+}
+
+.phase-signals { }
+.signals-label {
+  font: 700 8.5px/1 'JetBrains Mono', monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.02);
+  margin-bottom: 6px;
+}
+.signal-item {
+  font: 400 11.5px/1.5 -apple-system, system-ui, sans-serif;
+  color: rgba(255,255,255,0.04);
+  padding: 2px 0;
+  padding-left: 10px;
+  position: relative;
+}
+.signal-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+}
+
+/* Footer */
+.future-footer {
+  text-align: center;
+  padding: 40px 32px 60px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.future-footer p {
+  font: 400 11px/1.5 -apple-system, system-ui, sans-serif;
+  color: rgba(255,255,255,0.03);
+  margin-bottom: 4px;
+}
+.future-footer .dim { color: rgba(255,255,255,0.015); font-size: 9px; letter-spacing: 0.04em; }
+
+/* Responsive */
+@media (max-width: 700px) {
+  .phase-card { width: 100%; margin-left: 0 !important; margin-right: 0 !important; }
+  .timeline-phase:nth-child(odd) .phase-year,
+  .timeline-phase:nth-child(even) .phase-year { left: auto; right: auto; position: relative; top: auto; transform: none; }
+  .future-hero h1 { font-size: 26px; }
+  .timeline-line { left: 16px; }
+  .phase-marker { left: 16px; }
+}

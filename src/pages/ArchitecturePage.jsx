@@ -226,11 +226,11 @@ export default function ArchitecturePage() {
         <div className="footer-inner">
           <div className="footer-left">Parte de Cerebro ↔ IA — presentación para desarrolladores senior</div>
           <div className="footer-links">
-            <NavLink to="/">Cerebro 3D</NavLink>
-            <NavLink to="/conexiones">Conexiones</NavLink>
-            <NavLink to="/arquitectura">Arquitectura</NavLink>
-            <NavLink to="/agentes">Agentes IA</NavLink>
-            <NavLink to="/multiagente">Multiagente</NavLink>
+            <NavLink to="/">Arquitectura IA</NavLink>
+            <NavLink to="/cerebro">Cerebro 3D</NavLink>
+            <NavLink to="/conexiones">Mapa Neural</NavLink>
+            <NavLink to="/agentes">Agentes Autónomos</NavLink>
+            <NavLink to="/multiagente">Sist. Multiagente</NavLink>
           </div>
         </div>
       </footer>
