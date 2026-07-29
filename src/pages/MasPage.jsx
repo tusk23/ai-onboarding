@@ -38,10 +38,10 @@ export default function MasPage() {
     var DEFAULT_CAM_TGT = new THREE.Vector3(-0.29, 0.80, 0.00);
     var SPEED = 0.1;
     var camDebug = camDebugRef.current;
+    var loadingEl = loadingRef.current;
 
     function init() {
       var W = window.innerWidth, H = window.innerHeight;
-      var loadingEl = loadingRef.current;
 
       scene = new THREE.Scene();
       scene.background = new THREE.Color(0x0c0f16);
@@ -95,29 +95,11 @@ export default function MasPage() {
       buildLegend();
       bindEvents();
       renderer.render(scene, camera);
+      animate();
 
-      var allIds = CONCEPTS.map(function(x){return x.id;});
-      var builtCount = 0;
-      function buildNextBatch() {
-        var end = Math.min(builtCount + 2, allIds.length);
-        for (var i = builtCount; i < end; i++) {
-          var cObj = CONCEPTS.find(function(x){return x.id===allIds[i];});
-          if (cObj) ensureAccessory(cObj);
-          builtCount = i + 1;
-        }
-        if (loadingEl) {
-          loadingEl.querySelector('.loading-text').textContent = 'Preparando ' + builtCount + '/' + allIds.length + '…';
-        }
-        if (builtCount >= allIds.length) {
-          setTimeout(function() {
-            if (loadingEl) loadingEl.classList.add('done');
-          }, 200);
-          animate();
-        } else {
-          setTimeout(buildNextBatch, 30);
-        }
-      }
-      setTimeout(buildNextBatch, 50);
+      setTimeout(function() {
+        if (loadingEl) loadingEl.classList.add('done');
+      }, 100);
     }
 
     function box(group, x, y, z, w, h, d, color) {
@@ -1291,7 +1273,12 @@ export default function MasPage() {
         });
       }
 
-      ensureAccessory(c);
+      if (!conceptAccessories[c.id]) {
+        var loadMsg = loadingEl && loadingEl.querySelector('.loading-text');
+        if (loadMsg) loadMsg.textContent = 'Preparando ' + c.name + '…';
+        ensureAccessory(c);
+        if (loadMsg) setTimeout(function() { loadMsg.textContent = ''; }, 100);
+      }
       Object.keys(conceptAccessories).forEach(function(key) {
         if (conceptAccessories[key]) {
           conceptAccessories[key].visible = (key === c.id);
@@ -1912,6 +1899,7 @@ export default function MasPage() {
         <div className="loading-text">{t('mas.loading')}</div>
         <div className="loading-bar"><div className="loading-fill"></div></div>
       </div>
+      <div id="scene-container" ref={containerRef}></div>
       <SiteNav brand="Cerebro ↔ IA" />
       <div className="title-bar">
         <h1><span>{t('mas.heading').split(' — ')[0]}</span> — {t('mas.heading').split(' — ')[1]}</h1>

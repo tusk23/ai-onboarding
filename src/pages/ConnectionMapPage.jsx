@@ -10,7 +10,13 @@ export default function ConnectionMapPage() {
   const svgRef = useRef(null);
   const mountRef = useRef(true);
   const [selected, setSelected] = useState(null);
-  var { t } = useI18n();
+
+  function hexToRgb(hex) {
+    var r = parseInt(hex.slice(1,3), 16);
+    var g = parseInt(hex.slice(3,5), 16);
+    var b = parseInt(hex.slice(5,7), 16);
+    return r + ',' + g + ',' + b;
+  }
 
   useEffect(() => {
     document.title = t('connection.title');
@@ -66,7 +72,7 @@ export default function ConnectionMapPage() {
   }, []);
 
   useEffect(() => {
-    requestAnimationFrame(drawConnections);
+    requestAnimationFrame(function() { if (mountRef.current) drawConnections(); });
     window.addEventListener('resize', drawConnections);
     return () => window.removeEventListener('resize', drawConnections);
   }, [drawConnections]);

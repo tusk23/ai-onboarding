@@ -12,29 +12,37 @@
   white-space: nowrap;
 }
 
-.app-lang {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 9999;
+/* Language switcher inside nav */
+.nav-lang {
   display: flex;
-  gap: 2px;
+  gap: 3px;
+  margin-left: 16px;
+  padding-left: 12px;
+  border-left: 1px solid rgba(255,255,255,0.06);
+  flex-shrink: 0;
+  align-items: center;
 }
-.lang-btn {
-  background: rgba(255,255,255,0.03);
+.nav .nav-links {
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-lang .lang-btn {
+  background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 4px;
-  color: rgba(255,255,255,0.2);
-  font: 500 10px/1 -apple-system, system-ui, sans-serif;
-  padding: 3px 7px;
+  color: rgba(255,255,255,0.25);
+  font: 600 10px/1 -apple-system, system-ui, sans-serif;
+  padding: 3px 8px;
   cursor: pointer;
   transition: all 0.15s;
+  letter-spacing: 0.02em;
 }
-.lang-btn:hover {
-  background: rgba(255,255,255,0.06);
-  color: rgba(255,255,255,0.4);
+.nav-lang .lang-btn:hover {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.5);
 }
-.lang-btn.active {
+.nav-lang .lang-btn.active {
   background: rgba(255,107,53,0.15);
   border-color: rgba(255,107,53,0.3);
   color: #FF6B35;

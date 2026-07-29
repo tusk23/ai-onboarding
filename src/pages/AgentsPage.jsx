@@ -53,7 +53,7 @@ export default function AgentsPage() {
       scene.fog = new THREE.FogExp2(0x0c0f16, 0.04);
 
       camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 200);
-      camera.position.set(2.8, 2.0, 4.5);
+      camera.position.set(0, 1.2, 18);
 
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -63,13 +63,12 @@ export default function AgentsPage() {
       container.appendChild(renderer.domElement);
 
       controls = new OrbitControls(camera, renderer.domElement);
-      controls.autoRotate = true;
-      controls.autoRotateSpeed = 0.4;
+      controls.autoRotate = false;
       controls.target.set(0, 1.2, -0.2);
       controls.enableDamping = true;
       controls.dampingFactor = 0.08;
-      controls.minDistance = 4;
-      controls.maxDistance = 20;
+      controls.minDistance = 3;
+      controls.maxDistance = 15;
       controls.maxPolarAngle = Math.PI * 0.55;
 
       raycaster = new THREE.Raycaster();
@@ -98,6 +97,7 @@ export default function AgentsPage() {
       document.addEventListener('keydown', onKeyDown);
       closePanelRef.current.addEventListener('click', closePanel);
 
+      if (!legendRef.current) return;
       var legendItems = legendRef.current.querySelectorAll('.item');
       legendItems.forEach(function (el) {
         el.addEventListener('click', function () { selectConcept(el.dataset.concept); });
@@ -421,6 +421,7 @@ export default function AgentsPage() {
     }
 
     function updateLegend(concept) {
+      if (!legendRef.current) return;
       legendRef.current.querySelectorAll('.item').forEach(function (el) {
         el.classList.toggle('active', el.dataset.concept === concept);
       });
@@ -513,8 +514,10 @@ export default function AgentsPage() {
       if (closePanelRef.current) {
         closePanelRef.current.removeEventListener('click', closePanel);
       }
-      var legendItems = legendRef.current.querySelectorAll('.item');
-      legendItems.forEach(function (el) { el.replaceWith(el.cloneNode(true)); });
+      if (legendRef.current) {
+        var legendItems = legendRef.current.querySelectorAll('.item');
+        legendItems.forEach(function (el) { el.replaceWith(el.cloneNode(true)); });
+      }
       if (handle) {
         handle.removeEventListener('mousedown', onResizeMouseDown);
       }
